@@ -8,6 +8,10 @@ import '../css/index.css';
 
 // import components below
 
+// import views below
+import Home from '../routes/HomePage';
+import NotFound from '../routes/NotFound';
+
 // Provider established for future use of context
 class Provider extends React.Component {
 	constructor(props) {
@@ -39,9 +43,15 @@ class Provider extends React.Component {
 
 function App() {
 	return (
-		<div>
-			<h1>Huzzah</h1>
-		</div>
+		<Provider>
+			<Router>
+				<Switch>
+					<Route exact path='/' component={Home} />
+					<Route path='/index.html' component={Home} />
+					<Route path='/*' component={NotFound} />
+				</Switch>
+			</Router>
+		</Provider>
 	);
 }
 
