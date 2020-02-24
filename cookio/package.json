@@ -9,6 +9,7 @@
 		"concurrently": "^5.1.0",
 		"react": "^16.12.0",
 		"react-dom": "^16.12.0",
+		"react-router-dom": "^5.1.2",
 		"react-scripts": "3.4.0"
 	},
 	"scripts": {
@@ -32,6 +33,7 @@
 			"last 1 chrome version",
 			"last 1 firefox version",
 			"last 1 safari version"
-		]
+		],
+		"proxy": "http://localhost:3000"
 	}
 }
