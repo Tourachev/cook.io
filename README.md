@@ -21,20 +21,20 @@ The users are primarily expected to use it via a modern web browser on a mobile 
 
 # Functionality
 ## Recipes Browsing
-	. Filter Recipes by rating and comments (top/low).  
-	. Search by meal (Breakfast, Lunch, Dinner, Dessert).  
-	. Search by ingredients - pick what you have in the fridge and get suggestions.  
-	. Randomize recipes.  
+- Filter Recipes by rating and comments (top/low).  
+- Search by meal (Breakfast, Lunch, Dinner, Dessert).  
+- Search by ingredients - pick what you have in the fridge and get suggestions.  
+- Randomize recipes.  
 ## Personal Account
-	. Registration and Authentication.  
-	. Add ingredient restrictions (Vegan/Vegetarian/Pescatarian) and allergies.  
-	. Save Recipes.  
-	. Create Recipes.  
+- Registration and Authentication.  
+- Add ingredient restrictions (Vegan/Vegetarian/Pescatarian) and allergies.  
+- Save Recipes.  
+- Create Recipes.  
 ## Commenting and Rating
-	. Comment on any recipe.  
-	. Rate any recipe.  
+- Comment on any recipe.  
+- Rate any recipe.  
 ## Shopping Cart
-	. Create a shopping cart based on the recipes you have saved.  
+- Create a shopping cart based on the recipes you have saved.  
  
 # What is done
 - Boilerplate created.  
