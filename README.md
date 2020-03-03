@@ -1,4 +1,4 @@
-# cook.io
+# Cook.io
  Full stack implementation of a UI/UX project.
  
 # Problem Statement 
