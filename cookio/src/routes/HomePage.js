@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
+import Navbar from '../components/Navbar'
 
-export class Home extends Component {
+export class NotFound extends Component {
 	render() {
 		return (
 			<div>
-				<h1>This is home</h1>
+				<Navbar></Navbar>
+				<h1>Here</h1>
+				<img src="../img/img1.png" alt=""/>>
+				<img src="../img/img2.jpg" alt=""/>
 			</div>
 		);
 	}
 }
 
-export default Home;
+export default NotFound;
