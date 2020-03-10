@@ -14,6 +14,7 @@ import NotFound from '../routes/NotFound';
 import AboutUs from '../routes/AboutUs';
 import SignUp from '../routes/SignUp';
 import LogIn from '../routes/LogIn';
+import RecipesMain from '../routes/RecipesMain';
 // Provider established for future use of context
 class Provider extends React.Component {
 	constructor(props) {
@@ -53,7 +54,7 @@ function App() {
 					<Route path='/aboutus' component={AboutUs} />
 					<Route path='/login' component={LogIn} />
 					<Route path='/signup' component={SignUp} />
-					<Route path='/recipes' component={NotFound} />
+					<Route path='/recipes' component={RecipesMain} />
 					<Route path='/*' component={NotFound} />
 				</Switch>
 			</Router>
