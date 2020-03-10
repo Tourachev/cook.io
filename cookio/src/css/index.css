@@ -1,78 +1,78 @@
-
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 300;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-weight: 300;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
-a{
-  text-decoration: none !important;
-  color: black !important;
-  transition: all ease-in 0.2s !important;
+a {
+	text-decoration: none !important;
+	color: black !important;
+	transition: all ease-in 0.2s !important;
+	font-size: 1.2em !important;
 }
-
 
 nav {
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: space-between !important;
-  padding: 30px 40px 0px 40px;
+	display: flex !important;
+	flex-direction: row !important;
+	justify-content: space-between !important;
+	padding: 30px 40px 0px 40px;
 }
-nav a{
-  margin-right: 20px;
+nav a {
+	margin-right: 20px;
 }
 
 img {
-  display: inline-block;
+	display: inline-block;
 }
 
 /* Home Page Styling */
 
-#img-cont{
-  display: flex;
-  flex-direction: row;
+#img-cont {
+	display: flex;
+	flex-direction: row;
 }
 
-#logo-cont{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 60%;
+#logo-cont {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 60%;
+	margin-left: 2%;
 }
-#logo-cont img{
-  margin-top: 15%;
-  max-width: 65%;
+#logo-cont img {
+	margin-top: 20%;
+	max-width: 65%;
 }
-#logo-cont Button{
-  width: 35vw;
+#logo-cont button {
+	width: 35vw;
 }
-#logo-cont h3{
-  font-size: 1.8vw;
+#logo-cont h3 {
+	font-size: 1.8vw;
 }
-#circle-cont{
-  max-width: 50%;
+#circle-cont {
+	max-width: 50%;
 }
-#circle-cont img{
-  margin-top: 5%;
-  width: 140%;
-  height: 93%;
-  overflow: visible;
-  transform: translate(10%, 0);
+#circle-cont img {
+	margin-top: 5%;
+	width: 140%;
+	height: 93%;
+	overflow: visible;
+	transform: translate(10%, 0);
 }
 
 /* About Us Page */
-#about-us-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+#about-us-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
