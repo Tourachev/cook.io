@@ -15,9 +15,9 @@ code {
 }
 
 a{
-  text-decoration: none;
-  color: black;
-  transition: all ease-in 0.2s;
+  text-decoration: none !important;
+  color: black !important;
+  transition: all ease-in 0.2s !important;
 }
 
 a:hover {
@@ -25,9 +25,9 @@ a:hover {
 }
 
 nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
   padding: 30px 40px 0px 40px;
 }
 nav a{
@@ -35,9 +35,48 @@ nav a{
 }
 
 img {
-  height: 200px;
-  width: 200px;
   display: inline-block;
+}
+
+#img-cont{
+  display: flex;
+  flex-direction: row;
+}
+
+#logo-cont{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 50%;
+}
+#logo-cont img{
+  margin-top: 15%;
+  max-width: 65%;
+}
+#logo-cont Button{
+  width: 35vw;
+}
+#logo-cont h3{
+  font-size: 1.8vw;
+}
+#circle-cont{
+  max-width: 50%;
+}
+#circle-cont img{
+  margin-top: 5%;
+  margin-left: -40%;
+  width: 140%;
+  height: 110%;
+}
+
+
+#semicircle {
+  height: 500px;
+  width: 500px;
+  /* margin-left: 800px; */
+  /* margin-top:200px; */
+  overflow: visible;
+  transform: translate(50%, 0);
 }
 
 

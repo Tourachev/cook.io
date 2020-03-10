@@ -1,14 +1,25 @@
 import React, {Component} from 'react';
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
+import Logo from '../img/img3.jpg';
+import Semicircle from '../img/img1.png';
+import Button from 'react-bootstrap/Button';
 
 export class NotFound extends Component {
 	render() {
 		return (
 			<div>
 				<Navbar></Navbar>
-				<h1>Here</h1>
-				<img src="../img/img1.png" alt=""/>>
-				<img src="../img/img2.jpg" alt=""/>
+				<div id='img-cont'>
+					<div id='logo-cont'>
+						<img src={Logo} alt=""/>
+						<h3>The last cooking website you will ever visit.</h3>
+						<Button variant="outline-dark">Learn More!</Button>
+					</div>
+					<div id='circle-cont'>
+						<img id='semicircle' src={Semicircle} alt="" />
+					</div>
+				</div>
+				
 			</div>
 		);
 	}
