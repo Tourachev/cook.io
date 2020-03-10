@@ -4,7 +4,7 @@ import Logo from '../img/img3.jpg';
 import Semicircle from '../img/img1.png';
 import Button from 'react-bootstrap/Button';
 
-export class NotFound extends Component {
+export class Home extends Component {
 	render() {
 		return (
 			<div>
@@ -25,4 +25,4 @@ export class NotFound extends Component {
 	}
 }
 
-export default NotFound;
+export default Home;
