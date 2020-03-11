@@ -7,6 +7,7 @@ const indexRouter = require('./routes/index');
 const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const Sequelize = require('sequelize');
 
 //  Express server
 const app = express();
@@ -15,18 +16,34 @@ const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Black Magic on port ${port}`));
 
 // MySql
-var db = mysql.createConnection({
+// var db = mysql.createConnection({
+// 	host: 'whyfourtytwo.mynetgear.com',
+// 	port: 33006,
+// 	user: 'cook',
+// 	password: 'password',
+// 	database: 'cookio-app'
+// });
+
+// db.connect(function(err) {
+// 	if (err) throw err;
+// 	console.log('Connected!');
+// });
+
+// Sequelize
+
+const sequelize = new Sequelize({
 	host: 'whyfourtytwo.mynetgear.com',
 	port: 33006,
-	user: 'cook',
+	database: 'cookio-app',
+	username: 'cook',
 	password: 'password',
-	database: 'cookio-app'
+	dialect: 'mysql'
 });
-
-db.connect(function(err) {
-	if (err) throw err;
-	console.log('Connected!');
-});
+// check the databse connection
+sequelize
+	.authenticate()
+	.then(() => console.log('Connection has been established successfully.'))
+	.catch(err => console.error('Unable to connect to the database:', err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -57,4 +74,4 @@ app.use(function(err, req, res, next) {
 	res.render('error');
 });
 
-module.exports = {app, db};
+module.exports = {app};
