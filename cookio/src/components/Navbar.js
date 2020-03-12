@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export class Navbar extends Component {
 	render() {
@@ -8,15 +8,13 @@ export class Navbar extends Component {
 				<nav>
 					<div id='nav-left'>
 						<Link to='/index'>
-							<a href=''>Home</a>
+							<a>Home</a>
 						</Link>
-						<Link>
-							<a onClick={() => this.props.triggerLogin(true)}>
-								Login
-							</a>
+						<Link to='/login'>
+							<a>Login</a>
 						</Link>
 						<Link to='/signup'>
-							<a href=''>Sign-up</a>
+							<a>Sign-up</a>
 						</Link>
 						<Link to='/recipes'>
 							<a href=''>Recipes</a>

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import RecipeCard from './RecipeCard'
 
 export class AllRecipes extends Component {
 	constructor(props) {
@@ -20,7 +21,13 @@ export class AllRecipes extends Component {
 	render() {
 		return (
 			<div>
-				<div className='container'>Recipes will be rendered here</div>
+				<div className='recipe-card-container'>
+					<RecipeCard/>
+					<RecipeCard/>
+					<RecipeCard/>
+					<RecipeCard/>
+				</div>
+				
 			</div>
 		);
 	}
