@@ -10,8 +10,10 @@ export class Navbar extends Component {
 						<Link to='/index'>
 							<a href=''>Home</a>
 						</Link>
-						<Link to='/login'>
-							<a href=''>Login</a>
+						<Link>
+							<a onClick={() => this.props.triggerLogin(true)}>
+								Login
+							</a>
 						</Link>
 						<Link to='/signup'>
 							<a href=''>Sign-up</a>
