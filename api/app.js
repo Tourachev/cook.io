@@ -3,23 +3,34 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const indexRouter = require('./routes/index');
 const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const db = require('./models');
-const passport = require('./config/passport');
 
+// Routers
+const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/auth.js');
+const recipesRouter = require('./routes/recipes.js');
+const signUpRouter = require('./routes/signup');
 //  Express server
-const app = express();
 const PORT = process.env.PORT || 3001;
 
+const app = express();
 app.use(cors());
-// app.listen(port, () => console.log(`Black Magic on port ${port}`));
 
-// Passport
-app.use(passport.initialize());
-app.use(passport.session());
+// MySql
+var db = mysql.createConnection({
+	host: 'whyfourtytwo.mynetgear.com',
+	port: 33006,
+	user: 'cook',
+	password: 'password',
+	database: 'cookio-app'
+});
+
+db.connect(function(err) {
+	if (err) throw err;
+	console.log('Connected!');
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,7 +43,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes Will Go Below
-app.use('/', indexRouter);
+app.use('/signup', signUpRouter);
+app.use('/recipes', recipesRouter);
+app.use('/auth', loginRouter);
+app.use('/index', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -50,45 +64,8 @@ app.use(function(err, req, res, next) {
 	res.render('error');
 });
 
-// Sequelize
-db.sequelize.sync().then(function() {
-	app.listen(PORT, function() {
-		console.log(
-			'==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.',
-			PORT,
-			PORT
-		);
-	});
+app.listen(PORT, function() {
+	console.log('🌎  Listening on port %s.', PORT);
 });
 
 module.exports = app;
-
-// MySql
-// var db = mysql.createConnection({
-// 	host: 'whyfourtytwo.mynetgear.com',
-// 	port: 33006,
-// 	user: 'cook',
-// 	password: 'password',
-// 	database: 'cookio-app'
-// });
-
-// db.connect(function(err) {
-// 	if (err) throw err;
-// 	console.log('Connected!');
-// });
-
-// Sequelize
-
-// const sequelize = new Sequelize({
-// 	host: 'whyfourtytwo.mynetgear.com',
-// 	port: 33006,
-// 	database: 'cookio-app',
-// 	username: 'cook',
-// 	password: 'password',
-// 	dialect: 'mysql'
-// });
-// check the databse connection
-// sequelize
-// 	.authenticate()
-// 	.then(() => console.log('Connection has been established successfully.'))
-// 	.catch(err => console.error('Unable to connect to the database:', err));

@@ -1,14 +1,16 @@
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-		'Droid Sans', 'Helvetica Neue', sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-weight: 300;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
 a {
@@ -92,20 +94,22 @@ img {
 
 /* Main Recipes styling */
 
-.recipe-container{
+.recipe-container {
 	margin-top: 5%;
+	margin-left: 10vw;
+	width: 80vw;
 }
 
-.recipe-container h1{
+.recipe-container h1 {
 	text-align: center;
 	margin-bottom: 20px;
 }
 
-.filter-selection-button:hover{
+.filter-selection-button:hover {
 	color: black;
 }
 
-.filter-selection-row{
+.filter-selection-row {
 	margin-bottom: 20px;
 	display: flex;
 	flex-direction: row;
@@ -113,7 +117,7 @@ img {
 	align-items: center;
 }
 
-.filter-selection-row a{
+.filter-selection-row a {
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -124,72 +128,70 @@ img {
 	padding: 5px;
 }
 
-.filter-selection-row a:hover{
-	background-color: #F0F0F0;
+.filter-selection-row a:hover {
+	background-color: #f0f0f0;
 }
 
 /* Recipe Card Styling */
 
-.recipe-card-container{
+.recipe-card-container {
 	width: 100%;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
 
-.card-container{
+.card-container {
 	/* border: 1px solid black; */
-	background-color: #F8F8F8;
+	background-color: #f8f8f8;
 	border-radius: 15px;
 	height: 300px;
-	width: 520px;
 	margin: 10px;
 	transition: all 0.2s ease-out;
 	display: flex;
 	flex-direction: row;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-
 }
 
-.card-container:hover{
+.card-container:hover {
 	transform: scale(1.05);
 }
 
-.card-container-left{
+.card-container-left {
 	max-width: 40%;
 	overflow: hidden;
 }
 
-.card-container-left img{
+.card-container-left img {
 	/* width:  200px; */
 	height: 300px;
 }
 
-.card-container-right{
+.card-container-right {
 	width: 70%;
 	flex-direction: column;
 	padding: 2% 0 0 2%;
 }
 
-.card-container-right hr{
+.card-container-right hr {
 	width: 30%;
 }
 
-.card-container-right h2{
+.card-container-right h2 {
 	font-weight: 300;
 }
 
-.card-container-right h4{
+.card-container-right h4 {
 	font-weight: 300;
 }
 
-.card-container-right p{
+.card-container-right p {
 	margin-bottom: auto;
 }
 
 /* Generic */
 
-.center-text{
+.center-text {
 	text-align: center;
 }

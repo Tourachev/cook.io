@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Navbar from '../components/Navbar';
 import AllRecipes from '../components/AllRecipes';
-import { MDBInput, MDBCol } from "mdbreact";
+import {MDBInput, MDBCol} from 'mdbreact';
 
 export class RecipesMain extends Component {
 	constructor(props) {
@@ -16,18 +16,21 @@ export class RecipesMain extends Component {
 		return (
 			<div>
 				<Navbar></Navbar>
-				<div className='recipe-container container'> 
-						<h1 className='display-1' >Recipes</h1>
-						<MDBInput hint="Search" type="text" containerClass="active-pink active-pink-2 mt-0 mb-3" />
-						<div className='filter-selection-row'>
-							<a href="">Top Recipes</a>
-							<a href="">Random Recipes</a>
-							<a href="">Recipes By Meal</a>
-							<a href="">Recipes By Ingredient</a>
-						</div>
+				<div className='recipe-container'>
+					<h1 className='display-1'>Recipes</h1>
+					<MDBInput
+						hint='Search'
+						type='text'
+						containerClass='active-pink active-pink-2 mt-0 mb-3'
+					/>
+					<div className='filter-selection-row'>
+						<a href=''>Top Recipes</a>
+						<a href=''>Random Recipes</a>
+						<a href=''>Recipes By Meal</a>
+						<a href=''>Recipes By Ingredient</a>
+					</div>
 					<AllRecipes></AllRecipes>
 				</div>
-				
 			</div>
 		);
 	}

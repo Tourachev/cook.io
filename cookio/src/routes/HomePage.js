@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Navbar from '../components/Navbar';
 import Logo from '../img/img3.jpg';
 import Semicircle from '../img/img1.png';
@@ -18,7 +18,7 @@ export class Home extends Component {
 					<div id='logo-cont'>
 						<img src={Logo} alt='' />
 						<h3>The last cooking website you will ever visit.</h3>
-						<Button variant='outline-dark'>Learn More!</Button>;
+						<Button variant='outline-dark'>Learn More!</Button>
 					</div>
 					<div id='circle-cont'>
 						<img id='semicircle' src={Semicircle} alt='' />

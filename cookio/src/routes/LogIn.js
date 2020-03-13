@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Navbar from '../components/Navbar';
 import Logo from '../img/img3.jpg';
 import Semicircle from '../img/img1.png';
 import LoginFields from '../components/LoginFields';
+import axios from 'axios';
 
 export class LogIn extends Component {
 	render() {
