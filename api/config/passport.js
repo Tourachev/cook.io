@@ -2,7 +2,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 //
-//We will need the models folder to check passport agains
+//We will need the models folder to check passport against
 var db = require('../models');
 //
 // Telling passport we want to use a Local Strategy. In other words,
