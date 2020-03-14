@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Navbar from '../components/Navbar';
 import AllRecipes from '../components/AllRecipes';
 import {MDBInput, MDBCol} from 'mdbreact';
 
@@ -15,7 +14,6 @@ export class RecipesMain extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar></Navbar>
 				<div className='recipe-container'>
 					<h1 className='display-1'>Recipes</h1>
 					<MDBInput

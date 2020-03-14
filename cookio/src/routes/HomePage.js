@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Navbar from '../components/Navbar';
 import Logo from '../img/img3.jpg';
 import Semicircle from '../img/img1.png';
 import Button from 'react-bootstrap/Button';
@@ -13,7 +12,6 @@ export class Home extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar />
 				<div id='img-cont'>
 					<div id='logo-cont'>
 						<img src={Logo} alt='' />

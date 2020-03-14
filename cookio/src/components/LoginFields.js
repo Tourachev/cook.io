@@ -4,21 +4,25 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 
 const LoginFields = props => {
-	const [email, setEmail] = useState('example@me.com');
-	const [password, setPassword] = useState('test');
+	const [inputs, setInputs] = useState({
+		email: 'email@me.com',
+		password: 'Fdsdksopdk'
+	});
 
 	const handleChange = event => {
-		setEmail({
+		event.persist();
+		setInputs(inputs => ({
+			...inputs,
 			[event.target.id]: event.target.value
-		});
+		}));
 	};
 
 	const handleSubmit = event => {
 		event.preventDefault();
 
 		const credentials = {
-			email: email,
-			password: password
+			email: inputs.email,
+			password: inputs.password
 		};
 
 		axios.post('http://localhost:3001/auth', {credentials}).then(res => {
@@ -36,7 +40,7 @@ const LoginFields = props => {
 						<Form.Control
 							type='email'
 							placeholder='Enter email'
-							value={email}
+							value={inputs.email}
 							onChange={handleChange}
 							required
 						/>
@@ -47,7 +51,7 @@ const LoginFields = props => {
 						<Form.Control
 							type='password'
 							placeholder='Password'
-							value={password}
+							value={inputs.password}
 							onChange={handleChange}
 							required
 						/>
