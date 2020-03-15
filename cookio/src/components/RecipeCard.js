@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import temp from '../img/img4.jpg'
 
-export class RecipeCard extends Component {
+const RecipeCard = props =>  {
 	constructor(props) {
 		super(props);
 
@@ -11,7 +11,8 @@ export class RecipeCard extends Component {
 	}
 
 
-	render() {
+
+
 		return (
 			<div>
 				<div className='card-container'>
@@ -25,7 +26,6 @@ export class RecipeCard extends Component {
                 </div>
 			</div>
 		);
-	}
 }
 
 export default RecipeCard;

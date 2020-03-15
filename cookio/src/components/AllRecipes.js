@@ -1,36 +1,25 @@
-import React, {Component} from 'react';
+import React, {Fragement, useEffect, useState} from 'react';
 import axios from 'axios';
-import RecipeCard from './RecipeCard'
+import RecipeCard from './RecipeCard';
 
-export class AllRecipes extends Component {
-	constructor(props) {
-		super(props);
+const AllRecipes = props => {
+	const [recipes, setRecipes] = useState({recipes: []});
 
-		this.state = {
-			recipes: null
-		};
-	}
+	useEffect(() => {
+		// const recipes = axios.get('http://localhost:8081/').data;
+		console.log('Howdy');
+	});
 
-	async componentDidMount() {
-		const recipes = (await axios.get('http://localhost:8081/')).data;
-		this.setState({
-			recipes
-		});
-	}
-
-	render() {
-		return (
-			<div>
-				<div className='recipe-card-container'>
-					<RecipeCard/>
-					<RecipeCard/>
-					<RecipeCard/>
-					<RecipeCard/>
-				</div>
-				
+	return (
+		<div>
+			<div className='recipe-card-container'>
+				<RecipeCard />
+				<RecipeCard />
+				<RecipeCard />
+				<RecipeCard />
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
 
 export default AllRecipes;
