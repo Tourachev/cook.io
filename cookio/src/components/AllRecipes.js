@@ -4,6 +4,16 @@ import RecipeCard from './RecipeCard';
 
 const AllRecipes = props => {
 	const [recipes, setRecipes] = useState({recipes: []});
+	const [loading, setLoading] = useState(false)
+
+	const getRecpices = async () =>{
+		setLoading(true);
+
+		const res = await axios.get()
+
+		setRecipes()
+	}
+
 
 	useEffect(() => {
 		// const recipes = axios.get('http://localhost:8081/').data;

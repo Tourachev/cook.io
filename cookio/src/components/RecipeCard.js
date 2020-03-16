@@ -1,15 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import temp from '../img/img4.jpg'
 
 const RecipeCard = props =>  {
-	constructor(props) {
-		super(props);
 
-		this.state = {
-			recipes: null
-		};
-	}
-
+	const [recipe, setRecipe] = useState({})
+	
 
 
 
