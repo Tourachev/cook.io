@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import {Route, Switch, BrowserRouter as Router} from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
+// import context
+import UserContext from '../context/user-context/UserContext';
+// import RecipeContext from '../context/recipe-context/RecipeContext';
+
 // import css
 import '../css/index.css';
 
@@ -21,21 +25,26 @@ import RecipesByIngredient from '../routes/RecipesByIngredient';
 
 function App() {
 	return (
-		<Router>
-			<Navbar />
-			<Switch>
-				<Route exact path='/' component={Home} />
-				<Route path='/index' component={Home} />
-				<Route path='/aboutus' component={AboutUs} />
-				<Route path='/login' component={LogIn} />
-				<Route path='/signup' component={SignUp} />
-				<Route path='/recipes' component={RecipesMain} />
-				<Route path='/recipe/:id' component={RecipeDetail} />
-				<Route path='/bymeal' component={RecipesByMeal} />
-				<Route path='/byingredient' component={RecipesByIngredient} />
-				<Route path='/*' component={NotFound} />
-			</Switch>
-		</Router>
+		<UserContext>
+			<Router>
+				<Navbar />
+				<Switch>
+					<Route exact path='/' component={Home} />
+					<Route path='/index' component={Home} />
+					<Route path='/aboutus' component={AboutUs} />
+					<Route path='/login' component={LogIn} />
+					<Route path='/signup' component={SignUp} />
+					<Route path='/recipes' component={RecipesMain} />
+					<Route path='/recipe/:id' component={RecipeDetail} />
+					<Route path='/bymeal' component={RecipesByMeal} />
+					<Route
+						path='/byingredient'
+						component={RecipesByIngredient}
+					/>
+					<Route path='/*' component={NotFound} />
+				</Switch>
+			</Router>
+		</UserContext>
 	);
 }
 
