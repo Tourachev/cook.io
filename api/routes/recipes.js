@@ -2,9 +2,16 @@ var express = require('express');
 var router = express.Router();
 var userTranscactions = require('../transactions/user-transactions');
 
-router.get('/recipes', (req, res, next) => {
+router.get('/all', (req, res, next) => {
 	res.json({
-		message: 'Recipes Fired'
+		message: 'All Recipes Fired'
+	});
+});
+
+router.post('/', (req, res, next) => {
+	console.log(req.body);
+	res.json({
+		message: 'One Recipe Fired'
 	});
 });
 

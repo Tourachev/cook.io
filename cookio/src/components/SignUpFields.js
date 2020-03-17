@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const SignUpFields = props => {
 	const [inputs, setInputs] = useState({
-		email: 'tes',
+		email: '',
 		username: '',
 		password: '',
 		confirmPassword: ''
@@ -41,7 +41,7 @@ const SignUpFields = props => {
 						<Form.Label>Email address</Form.Label>
 						<Form.Control
 							type='email'
-							placeholder='Enter email'
+							placeholder='ramsey@me.com'
 							value={inputs.email}
 							onChange={handleChange}
 							required
@@ -83,7 +83,7 @@ const SignUpFields = props => {
 						/>
 					</Form.Group>
 
-					<Button variant='primary' type='submit'>
+					<Button variant='outline-dark' type='submit'>
 						Submit
 					</Button>
 				</Form>

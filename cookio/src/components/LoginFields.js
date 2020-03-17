@@ -5,8 +5,8 @@ import axios from 'axios';
 
 const LoginFields = props => {
 	const [inputs, setInputs] = useState({
-		email: 'email@me.com',
-		password: 'Fdsdksopdk'
+		email: '',
+		password: ''
 	});
 
 	const handleChange = event => {
@@ -39,7 +39,7 @@ const LoginFields = props => {
 						<Form.Label>Email address</Form.Label>
 						<Form.Control
 							type='email'
-							placeholder='Enter email'
+							placeholder='ramsey@me.com'
 							value={inputs.email}
 							onChange={handleChange}
 							required
@@ -56,7 +56,7 @@ const LoginFields = props => {
 							required
 						/>
 					</Form.Group>
-					<Button variant='primary' type='submit'>
+					<Button variant='outline-dark' type='submit'>
 						Log In!
 					</Button>
 				</Form>

@@ -19,18 +19,18 @@ const app = express();
 app.use(cors());
 
 // MySql
-var db = mysql.createConnection({
-	host: 'whyfourtytwo.mynetgear.com',
-	port: 33006,
-	user: 'cook',
-	password: 'password',
-	database: 'cookio-app'
-});
+// var db = mysql.createConnection({
+// 	host: 'whyfourtytwo.mynetgear.com',
+// 	port: 33006,
+// 	user: 'cook',
+// 	password: 'password',
+// 	database: 'cookio-app'
+// });
 
-db.connect(function(err) {
-	if (err) throw err;
-	console.log('Connected!');
-});
+// db.connect(function(err) {
+// 	if (err) throw err;
+// 	console.log('Connected!');
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
