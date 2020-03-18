@@ -18,27 +18,13 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
 
-// MySql
-// var db = mysql.createConnection({
-// 	host: 'whyfourtytwo.mynetgear.com',
-// 	port: 33006,
-// 	user: 'cook',
-// 	password: 'password',
-// 	database: 'cookio-app'
-// });
-
-// db.connect(function(err) {
-// 	if (err) throw err;
-// 	console.log('Connected!');
-// });
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
