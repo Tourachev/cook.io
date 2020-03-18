@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react';
 import axios from 'axios';
 import UserContext from './UserContext';
-import UserReducer from './UserReducer';
+// import UserReducer from './UserReducer';
 import {SET_LOADING} from '../types';
 
 const UserState = props => {

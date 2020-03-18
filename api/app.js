@@ -3,23 +3,22 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
+const connectDB = require('./config/db')
 // Import Routers
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/auth.js');
 const recipesRouter = require('./routes/recipes.js');
 const usersRouter = require('./routes/users');
-// Mongo
-
-
 
 //  Express server
 const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
+
+// Mongo
+connectDB()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

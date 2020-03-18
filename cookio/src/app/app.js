@@ -4,7 +4,7 @@ import {Route, Switch, BrowserRouter as Router} from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 // import context
-import UserContext from '../context/user-context/UserContext';
+// import UserContext from '../context/user-context/UserContext';
 // import RecipeContext from '../context/recipe-context/RecipeContext';
 
 // import css
@@ -25,7 +25,7 @@ import RecipesByIngredient from '../routes/RecipesByIngredient';
 
 function App() {
 	return (
-		<UserContext>
+		// <UserContext>
 			<Router>
 				<Navbar />
 				<Switch>
@@ -44,7 +44,7 @@ function App() {
 					<Route path='/*' component={NotFound} />
 				</Switch>
 			</Router>
-		</UserContext>
+		// </UserContext>
 	);
 }
 

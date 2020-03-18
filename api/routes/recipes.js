@@ -15,8 +15,8 @@ router.post('/', (req, res, next) => {
 // Get a recipe
 // Public
 
-router.post('/:id', (req, res, next) => {
-	res.send("Create a recpipe")
+router.get('/:id', (req, res, next) => {
+	res.send("get a recipe")
 
 });
 // @route DELETE api/recipe
@@ -24,7 +24,7 @@ router.post('/:id', (req, res, next) => {
 // Public
 
 router.delete('/', (req, res, next) => {
-	res.send("Delete a recpipe")
+	res.send("Delete a recipe")
 
 });
 // @route PUT api/recipe/:id
@@ -32,7 +32,7 @@ router.delete('/', (req, res, next) => {
 // Private
 
 router.put('/:id', (req, res, next) => {
-	res.send("Update a recpipe")
+	res.send("Update a recipe")
 
 });
 
