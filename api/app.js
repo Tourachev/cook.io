@@ -7,14 +7,17 @@ const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-// Routers
+// Import Routers
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/auth.js');
 const recipesRouter = require('./routes/recipes.js');
-const signUpRouter = require('./routes/signup');
+const usersRouter = require('./routes/users');
+// Mongo
+
+
+
 //  Express server
 const PORT = process.env.PORT || 3001;
-
 const app = express();
 app.use(cors());
 
@@ -29,10 +32,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes Will Go Below
-app.use('/signup', signUpRouter);
 app.use('/recipes', recipesRouter);
 app.use('/auth', loginRouter);
-app.use('/index', indexRouter);
+app.use('/', indexRouter);
+app.use('/users', usersRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -51,7 +54,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(PORT, function() {
-	console.log('🌎  Listening on port %s.', PORT);
+	console.log('🌎  Listening on port ' + PORT);
 });
 
 module.exports = app;

@@ -1,18 +1,39 @@
 var express = require('express');
 var router = express.Router();
-var userTranscactions = require('../transactions/user-transactions');
 
-router.get('/all', (req, res, next) => {
-	res.json({
-		message: 'All Recipes Fired'
-	});
-});
+
+// @route POST api/recpipe
+// Create a recipe
+// Private
 
 router.post('/', (req, res, next) => {
-	console.log(req.body);
-	res.json({
-		message: 'One Recipe Fired'
-	});
+	res.send("Create a recipe")
+
+});
+
+// @route GET api/recipe
+// Get a recipe
+// Public
+
+router.post('/:id', (req, res, next) => {
+	res.send("Create a recpipe")
+
+});
+// @route DELETE api/recipe
+// Delete a Recipe
+// Public
+
+router.delete('/', (req, res, next) => {
+	res.send("Delete a recpipe")
+
+});
+// @route PUT api/recipe/:id
+// Update a Recipe
+// Private
+
+router.put('/:id', (req, res, next) => {
+	res.send("Update a recpipe")
+
 });
 
 module.exports = router;
