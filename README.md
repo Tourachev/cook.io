@@ -10,7 +10,7 @@ Allows users to browse for cooking recipes. Choose recipe by meal. Add their own
 # Stack
 - React  
 - Express  
-- MySQL   
+- MongoDB via Atlas   
 - NodeJs 
 
 # Functionality
