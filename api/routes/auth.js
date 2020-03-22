@@ -1,14 +1,12 @@
-var express = require('express');
-var router = express.Router();
-
+const express = require('express');
+const router = express.Router();
 
 // @route GET api/auth
 // Get user logged in
 // Private
 
 router.get('/', (req, res, next) => {
-	res.send("Get logged in user")
-
+	res.send('Get logged in user');
 });
 
 // @route POST api/auth
@@ -16,14 +14,7 @@ router.get('/', (req, res, next) => {
 // Public
 
 router.post('/', (req, res, next) => {
-	res.send("Login user")
-
-
+	res.send('Login user');
 });
 
-
-
-
 module.exports = router;
-
-

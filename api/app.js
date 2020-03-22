@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const connectDB = require('./config/db')
+const connectDB = require('./config/db');
 // Import Routers
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/auth.js');
@@ -18,7 +18,7 @@ const app = express();
 app.use(cors());
 
 // Mongo
-connectDB()
+connectDB();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,10 +31,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes Will Go Below
-app.use('/recipes', recipesRouter);
-app.use('/auth', loginRouter);
-app.use('/', indexRouter);
-app.use('/users', usersRouter)
+app.use('/api', indexRouter);
+app.use('/api/recipes', recipesRouter);
+app.use('/api/auth', loginRouter);
+app.use('/api/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
