@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://admin:cookiemonster@cluster0-ek3k9.mongodb.net/test?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://admin:cookiemonster@cluster0-ek3k9.mongodb.net/test?retryWrites=true&w=majority", 
+    "jwtSecret": "lovethemcookies"
 }
