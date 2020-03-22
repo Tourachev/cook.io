@@ -11,8 +11,8 @@ const config = require('config')
 
 // Express validation wihin the params of the router
 router.post('/',
-	[check('email', 'please include a valid email').isEmail(), 
-		check('username', 'username is required').not().isEmpty(), 
+	[check('email', 'Please include a valid email').isEmail(), 
+		check('username', 'Username is required').not().isEmpty(), 
 		check('password', 'Please enter a password with 6 or more characters').isLength({min:6})], 
 		async (req, res, next) => {
 	const errors = validationResult(req);
@@ -41,7 +41,7 @@ router.post('/',
 			username, email, password
 		})
 
-		const salt = await bcrypt.genSalt(10);
+		const salt = await bcrypt.genSalt(10); 
 		
 		user.password = await bcrypt.hash(password, salt);
 
@@ -53,14 +53,17 @@ router.post('/',
 			}
 		}
 
-		jwt.sign(payload, config.get('jwtSecret'))
+		jwt.sign(payload, config.get('jwtSecret'), {
+			expiresIn: 360000
+		}, (err, token)=> {
+			if(err) throw err;
+			res.json({token})
+		})
 
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).send('Server Error')
 	}
-
-	res.send(req.body);
 });
 
 module.exports = router;

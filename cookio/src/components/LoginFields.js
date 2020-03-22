@@ -19,13 +19,8 @@ const LoginFields = props => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-
-		const credentials = {
-			email: inputs.email,
-			password: inputs.password
-		};
-
-		axios.post('http://localhost:3001/auth', {credentials}).then(res => {
+		axios.post('http://localhost:3001/api/auth', {email: inputs.email,
+		password: inputs.password}).then(res => {
 			console.log(res);
 			console.log(res.data);
 		});
