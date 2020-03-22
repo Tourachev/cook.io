@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const RecipeSchema = new mongoose.Schema({
 	name: {
 		type: String,
@@ -30,10 +31,6 @@ const RecipeSchema = new mongoose.Schema({
 	},
 	author: {
 		type: String
-	},
-	id: {
-		type: Number,
-		unique: true
 	},
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
