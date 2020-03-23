@@ -1,10 +1,15 @@
-import React, {Fragement, useEffect, useState} from 'react';
+import React, { Fragement, useEffect, useState, Fragment, useContext } from 'react';
 import axios from 'axios';
 import RecipeCard from '../components/RecipeCard';
+import RecipeContext from '../context/recipe-context/RecipeContext';
 
-const RecipeList = props => {
-	const [recipes, setRecipes] = useState({});
-	const [loading, setLoading] = useState(false);
+const RecipeList = (props) => {
+	// const [ recipes, setRecipes ] = useState({});
+	const [ loading, setLoading ] = useState(false);
+
+	const recipeContext = useContext(RecipeContext);
+
+	const { recipes } = recipeContext;
 
 	const getRecpices = async () => {
 		setLoading(true);

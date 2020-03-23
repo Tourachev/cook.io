@@ -1,10 +1,9 @@
-import React, {useReducer} from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 import UserContext from './UserContext';
-// import UserReducer from './UserReducer';
-import {SET_LOADING} from '../types';
+import UserReducer from './UserReducer';
 
-const UserState = props => {
+const UserState = (props) => {
 	const InitialState = {
 		username: '',
 		email: '',
@@ -13,7 +12,7 @@ const UserState = props => {
 		isLoading: false
 	};
 
-	const [state, dispatch] = useReducer(UserReducer, InitialState);
+	const [ state, dispatch ] = useReducer(UserReducer, InitialState);
 
 	// Logging in
 

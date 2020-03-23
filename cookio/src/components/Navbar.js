@@ -1,10 +1,37 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Logo from '../img/img3.jpg';
 
-const Navbar = props => {
+const Navbar = (props) => {
+	if (props.isLoggedIn) {
+		return (
+			<div>
+				<nav className='nav-logged-in'>
+					<div id='nav-left'>
+						<Link to='/index'>
+							<a>Home</a>
+						</Link>
+						<Link to='/login'>
+							<a>My Account</a>
+						</Link>
+						<Link to='/recipes'>
+							<a href=''>Recipes</a>
+						</Link>
+						<Link to='/aboutus'>
+							<a href=''>About Us</a>
+						</Link>
+					</div>
+					<div id='nav-right'>
+						<img src={Logo} alt='' />
+					</div>
+				</nav>
+			</div>
+		);
+	}
+
 	return (
 		<div>
-			<nav>
+			<nav className='nav-not-logged-in'>
 				<div id='nav-left'>
 					<Link to='/index'>
 						<a>Home</a>
@@ -27,6 +54,10 @@ const Navbar = props => {
 			</nav>
 		</div>
 	);
+};
+
+Navbar.defaultProps = {
+	isLoggedIn: false
 };
 
 export default Navbar;
