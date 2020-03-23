@@ -4,8 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
+
 // Import Routers
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/auth.js');
@@ -13,7 +13,7 @@ const recipesRouter = require('./routes/recipes.js');
 const usersRouter = require('./routes/users');
 
 //  Express server
-const PORT = process.env.PORT || 3001;
+
 const app = express();
 app.use(cors());
 
@@ -52,8 +52,10 @@ app.use(function(err, req, res, next) {
 	res.render('error');
 });
 
-app.listen(PORT, function() {
-	console.log('🌎  Listening on port ' + PORT);
+app.set('port', process.env.PORT || 5000);
+
+app.listen(app.get('port'), function() {
+	console.log('Listening on port ' + app.get('port'));
 });
 
 module.exports = app;
