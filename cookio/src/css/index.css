@@ -232,6 +232,63 @@ img {
 	justify-content: center;
 }
 
+/* My Account style */
+
+.myaccount-container {
+	margin: 5%;
+}
+
+.myaccount-top-bar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.myaccount-content-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.myaccount-sidebar {
+	width: 25%;
+	padding-right: 1%;
+	border-right: 1px solid rgba(0, 0, 0, .1);
+}
+
+.myaccount-sidebar h3 {
+	font-weight: 300;
+	font-size: 1.3vw;
+}
+
+.myaccount-sidebar h2 {
+	font-weight: 300;
+	font-size: 1.5vw;
+}
+
+.myaccount-content {
+	width: 70%;
+}
+
+.avatar-container {
+	/* border: 1px solid black; */
+	border-radius: 50%;
+
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, .1);
+	transition: ease-in 0.3s all;
+}
+
+.avatar-container:hover {
+	background-color: rgba(0, 0, 0, .5);
+}
+
+#my-account-avatar {
+	margin-top: 10px;
+	max-width: 50px;
+}
+
 /* Generic */
 
 .center-text {
@@ -246,7 +303,17 @@ img {
 	}
 }
 
+/* iPad Pro media */
+
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+	.card-container {
+		width: 90vw;
+	}
+}
+
+/* Browser resize */
+
+@media screen and (max-width: 1440px) {
 	.card-container {
 		width: 90vw;
 	}

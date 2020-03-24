@@ -11,7 +11,7 @@ const Navbar = (props) => {
 						<Link to='/index'>
 							<a>Home</a>
 						</Link>
-						<Link to='/login'>
+						<Link to='/myaccount'>
 							<a>My Account</a>
 						</Link>
 						<Link to='/recipes'>
@@ -57,7 +57,7 @@ const Navbar = (props) => {
 };
 
 Navbar.defaultProps = {
-	isLoggedIn: false
+	isLoggedIn: true
 };
 
 export default Navbar;

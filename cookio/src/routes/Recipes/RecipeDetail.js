@@ -1,15 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const RecipeDetail = props => {
-	const [recipe, setRecipe] = useState({recipeID: props.match.params.id});
-	const [loading, setLoading] = useState(false);
+const RecipeDetail = (props) => {
+	const [ recipe, setRecipe ] = useState({ recipeID: props.match.params.id });
+	const [ loading, setLoading ] = useState(false);
 
-	const getRecipeDetails = async recipeID => {
+	const getRecipeDetails = async (recipeID) => {
 		setLoading(true);
-		const res = await axios.post('http://localhost:3001/recipes/', {
+
+		const res = await axios.post('/api/recipes/' + recipe.recipeID, {
 			recipeID
 		});
+		console.log(res.data);
 		setRecipe(res.data);
 		setLoading(false);
 	};

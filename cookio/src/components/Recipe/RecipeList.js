@@ -1,28 +1,21 @@
-import React, {
-	Fragement,
-	useEffect,
-	useState,
-	Fragment,
-	useContext
-} from 'react';
+import React, { Fragement, useEffect, useState, Fragment, useContext } from 'react';
 import axios from 'axios';
 import RecipeCard from './RecipeCard';
 import RecipeContext from '../../context/recipe-context/RecipeContext';
 
-const RecipeList = props => {
+const RecipeList = (props) => {
 	// const [ recipes, setRecipes ] = useState({});
-	const [loading, setLoading] = useState(false);
+	const [ loading, setLoading ] = useState(false);
 
 	const recipeContext = useContext(RecipeContext);
 
-	const {recipes} = recipeContext;
+	const { recipes } = recipeContext;
 
 	const getRecpices = async () => {
 		setLoading(true);
 
-		const res = await axios.get('/recipes');
+		const res = await axios.get('api/recipes');
 		console.log(res.data);
-		// setRecipes(res.data.items);
 		setLoading(false);
 	};
 
@@ -32,11 +25,7 @@ const RecipeList = props => {
 	}, []);
 
 	return (
-		<div className='recipe-card-container'>
-			{recipes.map(recipe => (
-				<RecipeCard recipeContent={recipe} />
-			))}
-		</div>
+		<div className='recipe-card-container'>{recipes.map((recipe) => <RecipeCard recipeContent={recipe} />)}</div>
 	);
 };
 

@@ -1,19 +1,16 @@
-import React, {Fragement, useEffect, useState} from 'react';
+import React, { Fragement, useEffect, useState } from 'react';
 import axios from 'axios';
-import {MDBInput, MDBCol} from 'mdbreact';
-import RecipeList from '../components/Recipe/RecipeList';
-import {Link} from 'react-router-dom';
+import { MDBInput, MDBCol } from 'mdbreact';
+import { Link } from 'react-router-dom';
+import RecipeList from '../../components/Recipe/RecipeList';
 
-const RecipesMain = () => {
+const RecipesByMeal = () => {
 	return (
 		<div>
 			<div className='recipe-container'>
 				<h1 className='display-1'>Recipes</h1>
-				<MDBInput
-					hint='Search'
-					type='text'
-					containerClass='active-pink active-pink-2 mt-0 mb-3'
-				/>
+				<MDBInput hint='Search' type='text' containerClass='active-pink active-pink-2 mt-0 mb-3' />
+
 				<div className='filter-selection-row'>
 					<a href=''>Top Recipes</a>
 					<a href=''>Random Recipes</a>
@@ -24,10 +21,11 @@ const RecipesMain = () => {
 						<a href=''>Recipes By Ingredient</a>
 					</Link>
 				</div>
+
 				<RecipeList />
 			</div>
 		</div>
 	);
 };
 
-export default RecipesMain;
+export default RecipesByMeal;
