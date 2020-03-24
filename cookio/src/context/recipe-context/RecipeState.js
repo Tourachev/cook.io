@@ -1,10 +1,16 @@
-import React, { useReducer } from 'react';
+import React, {useReducer} from 'react';
 import axios from 'axios';
 import RecipeContext from './RecipeContext';
 import RecipeReducer from './RecipeReducer';
-import { ADD_RECIPE, DELETE_RECIPE, UPDATE_RECIPE, FILTER_RECIPE, CLEAR_FILTER } from '../types';
+import {
+	ADD_RECIPE,
+	DELETE_RECIPE,
+	UPDATE_RECIPE,
+	FILTER_RECIPE,
+	CLEAR_FILTER
+} from '../types';
 
-const RecipeState = (props) => {
+const RecipeState = props => {
 	const InitialState = {
 		recipes: [
 			{
@@ -74,7 +80,7 @@ const RecipeState = (props) => {
 		isLoading: false
 	};
 
-	const [ state, dispatch ] = useReducer(RecipeReducer, InitialState);
+	const [state, dispatch] = useReducer(RecipeReducer, InitialState);
 
 	// Fetch all Recipes
 
@@ -97,13 +103,13 @@ const RecipeState = (props) => {
 	// Fetch Recipes
 
 	return (
-		<RecipeContext
+		<RecipeContext.Provider
 			value={{
 				recipes: state.recipes
 			}}
 		>
 			{props.children}
-		</RecipeContext>
+		</RecipeContext.Provider>
 	);
 };
 

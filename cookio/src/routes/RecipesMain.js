@@ -1,7 +1,7 @@
 import React, {Fragement, useEffect, useState} from 'react';
 import axios from 'axios';
 import {MDBInput, MDBCol} from 'mdbreact';
-import RecipeList from '../components/RecipeList';
+import RecipeList from '../components/Recipe/RecipeList';
 import {Link} from 'react-router-dom';
 
 const RecipesMain = () => {
