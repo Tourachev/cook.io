@@ -297,12 +297,26 @@ img {
 .table-head h3{
 	font-weight: 300;
 }
+#add-ingredient-button{
+	height: 50%;
+    margin-top: 32px;
+}
+
+#add-step-button{
+	height: 86px;
+    margin-top: 32px;
+}
+
+.current-ingredients{
+	margin-bottom: 2%;
+}
 
 /* Generic */
 
 .center-text {
 	text-align: center;
 }
+
 
 /* iPhone X media */
 

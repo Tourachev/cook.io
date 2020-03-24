@@ -44,10 +44,12 @@ const IngredientForm = ({addIngredient}) => {
                         <Form.Label>Ingredient Quantity: </Form.Label>
                         <Form.Control type='text' placeholder='10 o.z.' value={value.quantity} onChange={handleChange}/>
                     </Form.Group>
+
+                    <Button variant='outline-success' onClick={handleSubmit} id="add-ingredient-button" >
+                        Add +
+                    </Button>
                 </Form.Row>
-                <Button variant='success' type='submit'>
-                    Add +
-                </Button>
+                
             </Form>
         </div>
     );
@@ -76,14 +78,18 @@ const IngredientForm = ({addIngredient}) => {
     return (
         <div> 
             <Form onSubmit={handleSubmit}>
-                <Form.Group controlId='instruction'>
-                    <Form.Label>Next Step:</Form.Label>
-                    <Form.Control as='textarea' rows='3' onChange={handleChange}/>
-                </Form.Group>
+                <Form.Row>
+                    <Form.Group as={Col} controlId='instruction'>
+                        <Form.Label>Next Step:</Form.Label>
+                        <Form.Control as='textarea' rows='3' onChange={handleChange} />
+                    </Form.Group>
 
-                <Button variant='success' type='submit'>
-                    Add A Step +
-                </Button>
+                    <Button variant='outline-success' onClick={handleSubmit} id="add-step-button">
+                        Add A Step +
+                    </Button>
+
+                </Form.Row>
+                
             </Form>
         </div>
     );
@@ -91,11 +97,15 @@ const IngredientForm = ({addIngredient}) => {
 
 const CreateRecipe = (props) => {
     const [ ingredients, setIngredients ] = useState([ {name: "Potato", quantity: "2"}, {name: "Steak", quantity: "2 ounces"}, {name: "Onion", quantity: "1/4"} ]);
-    const [instructions, setinstructions] = useState([{instruction:'Peel the potatoes'},{instruction:'Chop the Onions'},{instruction:'Grill the steak'}])
+    const [instructions, setInstructions] = useState([{instruction:'Peel the potatoes'},{instruction:'Chop the Onions'},{instruction:'Grill the steak'}])
+    const [recipe, setRecipe] = useState({name:'', ingredients:ingredients, cooktime:'', preptime:'', difficulty:'', rating:'', instructions: instructions})
+
 
     const addIngredient = newIngredient => {
         const newIngredients = [...ingredients, { name: newIngredient.name, quantity: newIngredient.quantity }];
-        setIngredients(newIngredients);
+        console.log(newIngredients)
+        setIngredients([...ingredients, { name: newIngredient.name, quantity: newIngredient.quantity }]);
+        console.log(ingredients)
     };
 
     const deleteIngredient = ingredientIndex => {
@@ -105,42 +115,58 @@ const CreateRecipe = (props) => {
 
     const addInstruction = newInstruction => {
         const newInstructions = [...instructions, { instruction: newInstruction.instruction}];
-        setinstructions(newInstructions);
+        setInstructions(newInstructions);
     };
 
     const deleteInstruction = instructionIndex => {
         const newInstructions = instructions.filter((_, index) => index !== instructionIndex);
-        setinstructions(newInstructions);
+        setInstructions(newInstructions);
     };
+
+    const handleRecipeChange = event => {
+		event.persist();
+		setRecipe(inputs => ({
+			...inputs,
+			[event.target.id]: event.target.value
+		}));
+	};
+  
+    const handleRecipeSubmit = e => {
+        e.preventDefault();
+        if (!recipe) return;
+        // setRecipe({name:'', ingredients:ingredients, cooktime:'', preptime:'', difficulty:'', rating:'', instructions: instructions});
+        console.log(recipe)
+    };
+  
 
 	return (
 		<div>
 			<div className='container'>
 				<h1 className='display-3'>Create A Recipe</h1>
-				<Form>
-					<Form.Group controlId='formBasicEmail'>
+				<Form onSubmit={handleRecipeSubmit}>
+					<Form.Group controlId='name'>
 						<Form.Label>Name</Form.Label>
-						<Form.Control type='text' placeholder='Enter Name' required />
+						<Form.Control type='text' placeholder='Enter Name' required onChange={handleRecipeChange}/>
 					</Form.Group>
 
 					<Form.Row>
-						<Form.Group as={Col} controlId='formGridEmail'>
+						<Form.Group as={Col} controlId='cooktime'>
 							<Form.Label>Cook Time in Minutes: </Form.Label>
-							<Form.Control type='number' placeholder='10' />
+							<Form.Control type='number' placeholder='10' onChange={handleRecipeChange} required/>
 						</Form.Group>
 
-						<Form.Group as={Col} controlId='formGridPassword'>
+						<Form.Group as={Col} controlId='preptime'>
 							<Form.Label>Prep Time in Minutes: </Form.Label>
-							<Form.Control type='number' placeholder='10' />
+							<Form.Control type='number' placeholder='10' onChange={handleRecipeChange} required/>
 						</Form.Group>
 					</Form.Row>
 
-					<Form.Group controlId='exampleForm.ControlSelect1'>
+					<Form.Group controlId='difficulty'>
 						<Form.Label>Difficulty</Form.Label>
-						<Form.Control as='select'>
-							<option>Easy</option>
-							<option>Medium</option>
-							<option>Hard</option>
+						<Form.Control as='select' onChange={handleRecipeChange} required>
+							<option value="Easy">Easy</option>
+							<option value="Medium">Medium</option>
+							<option value="Hard">Hard</option>
 						</Form.Control>
 					</Form.Group>
 
@@ -177,7 +203,6 @@ const CreateRecipe = (props) => {
                             </Table>
                         </TableContainer>
 					</div>
-					<hr />
 
 					<h1 className='display-4'>Add Instrutctions</h1>
 					<InstructionForm addInstruction={addInstruction}></InstructionForm>
@@ -186,25 +211,25 @@ const CreateRecipe = (props) => {
                     <div className='current-instructions'>
                         <TableContainer component={Paper}>
                             {instructions.map((instruction, index) => (
-                            <Table>
-                                <TableHead className='table-head'>
-                                        <TableRow>
-                                            <TableCell><h4>Step {index+1}</h4></TableCell>
-                                            <TableCell align="right">                                    
-                                                <IconButton edge="end" aria-label="comments">
-                                                    <DeleteIcon onClick={()=>deleteInstruction(index)}/>
-                                                </IconButton>
-                                            </TableCell>
-                                        </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                        <TableRow key={index}>
-                                            <TableCell component="th" scope="row">
-                                                {instruction.instruction}
-                                            </TableCell>
-                                        </TableRow>
-                                </TableBody>
-                            </Table> 
+                                <Table >
+                                    <TableHead className='table-head'>
+                                            <TableRow>
+                                                <TableCell><h4>Step {index+1}</h4></TableCell>
+                                                <TableCell align="right">                                    
+                                                    <IconButton edge="end" aria-label="comments">
+                                                        <DeleteIcon onClick={()=>deleteInstruction(index)}/>
+                                                    </IconButton>
+                                                </TableCell>
+                                            </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                            <TableRow key={index}>
+                                                <TableCell component="th" scope="row">
+                                                    {instruction.instruction}
+                                                </TableCell>
+                                            </TableRow>
+                                    </TableBody>
+                                </Table> 
                         ))}
                         </TableContainer>
 					</div>

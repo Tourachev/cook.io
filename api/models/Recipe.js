@@ -26,6 +26,10 @@ const RecipeSchema = new mongoose.Schema({
 		type: Number,
 		default: 0
 	},
+	instructions: {
+		type: [String],
+		required: true
+	},
 	comments: {
 		type: [ {author: String, comment: String} ]
 	},
