@@ -19,11 +19,11 @@ const LoginFields = props => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		axios.post('/api/auth', {email: inputs.email,
-		password: inputs.password}).then(res => {
-			console.log(res);
-			console.log(res.data);
-		});
+		axios
+			.post('/api/auth', {email: inputs.email, password: inputs.password})
+			.then(res => {
+				console.log(res.data);
+			});
 	};
 
 	return (
