@@ -17,13 +17,15 @@ import axios from 'axios';
 import RecipeContext from '../../context/recipe-context/RecipeContext';
 
 const CreateRecipe = () => {
+	const recipeContext = useContext(RecipeContext);
+
 	const [ingredients, setIngredients] = useState([
-		// {name: 'Potato', quantity: '2'},
+		{name: 'Potato', quantity: '2'}
 		// {name: 'Steak', quantity: '2 ounces'},
 		// {name: 'Onion', quantity: '1/4'}
 	]);
 	const [instructions, setInstructions] = useState([
-		// {instruction: 'Peel the potatoes'},
+		{instruction: 'Peel the potatoes'}
 		// {instruction: 'Chop the Onions'},
 		// {instruction: 'Grill the steak'}
 	]);
@@ -32,7 +34,7 @@ const CreateRecipe = () => {
 		ingredients: ingredients,
 		cooktime: '',
 		preptime: '',
-		difficulty: '',
+		difficulty: 'Easy',
 		rating: '',
 		instructions: instructions
 	});
@@ -78,6 +80,17 @@ const CreateRecipe = () => {
 	const handleRecipeSubmit = e => {
 		e.preventDefault();
 		if (!recipe) return;
+		recipeContext.addRecipe(recipe);
+
+		// axios.post('http://localhost:5000/api/recipes/', {
+		// 	name: recipe.name,
+		// 	ingredients: recipe.ingredients,
+		// 	cooktime: recipe.cooktime,
+		// 	preptime: recipe.cooktime,
+		// 	difficulty: recipe.difficulty,
+		// 	instructions: recipe.instructions
+		// });
+
 		setRecipe({
 			name: '',
 			ingredients: ingredients,
@@ -85,15 +98,6 @@ const CreateRecipe = () => {
 			preptime: '',
 			difficulty: '',
 			instructions: instructions
-		});
-
-		axios.post('http://localhost:5000/api/recipes/', {
-			name: recipe.name,
-			ingredients: recipe.ingredients,
-			cooktime: recipe.cooktime,
-			preptime: recipe.cooktime,
-			difficulty: recipe.difficulty,
-			instructions: recipe.instructions
 		});
 	};
 	return (

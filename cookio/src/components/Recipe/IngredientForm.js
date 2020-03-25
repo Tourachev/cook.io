@@ -17,8 +17,8 @@ const IngredientForm = ({addIngredient}) => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		if (!value) return;
-		setValue({name: '', quantity: ''});
 		addIngredient(value);
+		setValue({name: '', quantity: ''});
 	};
 
 	return (
