@@ -119,6 +119,7 @@ img {
 
 .filter-selection-row {
 	margin-bottom: 20px;
+	height: 40px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -250,7 +251,8 @@ img {
 }
 
 .myaccount-sidebar {
-	width: 25%;
+	min-width: 25%;
+	max: 25%;
 	padding-right: 1%;
 	border-right: 1px solid rgba(0, 0, 0, .1);
 }
@@ -291,23 +293,23 @@ img {
 
 /* Create A Recipe */
 
-.table-head{
+.table-head {
 	background-color: #f8f8f8;
 }
-.table-head h3{
+.table-head h3 {
 	font-weight: 300;
 }
-#add-ingredient-button{
+#add-ingredient-button {
 	height: 50%;
-    margin-top: 32px;
+	margin-top: 32px;
 }
 
-#add-step-button{
+#add-step-button {
 	height: 86px;
-    margin-top: 32px;
+	margin-top: 32px;
 }
 
-.current-ingredients{
+.current-ingredients {
 	margin-bottom: 2%;
 }
 
@@ -316,7 +318,6 @@ img {
 .center-text {
 	text-align: center;
 }
-
 
 /* iPhone X media */
 

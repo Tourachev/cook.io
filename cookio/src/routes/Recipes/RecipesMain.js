@@ -17,17 +17,11 @@ const RecipesMain = (props) => {
 					<MDBInput hint='Search' type='text' containerClass='active-pink active-pink-2 mt-0 mb-3' />
 
 					<div className='filter-selection-row'>
-						<a href=''>Top Recipes</a>
-						<a href=''>Random Recipes</a>
-						<Link to='/bymeal'>
-							<a href=''>Recipes By Meal</a>
-						</Link>
-						<Link to='/byingredient'>
-							<a href=''>Recipes By Ingredient</a>
-						</Link>
-						<Link to='/newrecipe'>
-							<a href=''>Create a Recipe</a>
-						</Link>
+						<Link to=''>Top Recipes</Link>
+						<Link to=''>Random Recipes</Link>
+						<Link to='/bymeal'>Recipes By Meal</Link>
+						<Link to='/byingredient'>Recipes By Ingredient</Link>
+						<Link to='/newrecipe'>Create a Recipe</Link>
 					</div>
 
 					<RecipeList />
@@ -42,14 +36,10 @@ const RecipesMain = (props) => {
 				<MDBInput hint='Search' type='text' containerClass='active-pink active-pink-2 mt-0 mb-3' />
 
 				<div className='filter-selection-row'>
-					<a href=''>Top Recipes</a>
-					<a href=''>Random Recipes</a>
-					<Link to='/bymeal'>
-						<a href=''>Recipes By Meal</a>
-					</Link>
-					<Link to='/byingredient'>
-						<a href=''>Recipes By Ingredient</a>
-					</Link>
+					<Link to=''>Top Recipes</Link>
+					<Link to=''>Random Recipes</Link>
+					<Link to='/bymeal'>Recipes By Meal</Link>
+					<Link to='/byingredient'>Recipes By Ingredient</Link>
 				</div>
 
 				<RecipeList />

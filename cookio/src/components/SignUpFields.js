@@ -1,43 +1,58 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import AuthContext from '../context/auth-context/AuthContext';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import Alert from '../components/Alert';
+import AlertContext from '../context/alert-context/AlertContext';
 
-const SignUpFields = props => {
+const SignUpFields = (props) => {
 	const authContext = useContext(AuthContext);
+	const alertContext = useContext(AlertContext);
+
+	const { setAlert } = alertContext;
+
 	let history = useHistory();
 
-	const [user, setUser] = useState({
+	const [ user, setUser ] = useState({
 		email: '',
 		username: '',
 		password: '',
 		confirmPassword: ''
 	});
 
-	const {email, username, password, confirmPassword} = user;
-	const {register, error, clearErrors, isAuthenticated} = authContext;
+	const { email, username, password, confirmPassword } = user;
+	const { register, error, clearErrors, isAuthenticated } = authContext;
 
-	useEffect(() => {
-		if (isAuthenticated) {
-			history.push('/recipes');
-		}
+	useEffect(
+		() => {
+			if (isAuthenticated) {
+				history.push('/recipes');
+			}
 
-		if (error === 'User already exists') {
-		}
-	}, [error, isAuthenticated, props.history]);
+			if (error === 'User already exists') {
+			}
+		},
+		[ error, isAuthenticated, props.history ]
+	);
 
-	const handleChange = event => {
+	const handleChange = (event) => {
 		event.persist();
-		setUser(user => ({
+		setUser((user) => ({
 			...user,
 			[event.target.id]: event.target.value
 		}));
 	};
 
-	const handleSubmit = event => {
+	const handleSubmit = (event) => {
 		event.preventDefault();
-		register({email, username, password});
+		if (username === '' || email === '' || password === '') {
+			setAlert('Please enter all fields', 'danger');
+		} else if (password !== confirmPassword) {
+			setAlert('Passwords do not match', 'danger');
+		} else {
+			register({ email, username, password });
+		}
 	};
 	return (
 		<div>
@@ -92,6 +107,7 @@ const SignUpFields = props => {
 					<Button variant='outline-dark' type='submit'>
 						Submit
 					</Button>
+					<Alert />
 				</Form>
 			</div>
 		</div>
