@@ -3,26 +3,25 @@ import axios from 'axios';
 import { MDBInput, MDBCol } from 'mdbreact';
 import { Link } from 'react-router-dom';
 import RecipeList from '../../components/Recipe/RecipeList';
+import RecipeMenu from '../../components/Recipe/RecipeMenu';
 
 const RecipesByMeal = () => {
 	return (
 		<div>
-			<div className='recipe-container'>
-				<h1 className='display-1'>Recipes</h1>
-				<MDBInput hint='Search' type='text' containerClass='active-pink active-pink-2 mt-0 mb-3' />
-
-				<div className='filter-selection-row'>
-					<a href=''>Top Recipes</a>
-					<a href=''>Random Recipes</a>
-					<Link to='/bymeal'>
-						<a href=''>Recipes By Meal</a>
-					</Link>
-					<Link to='/byingredient'>
-						<a href=''>Recipes By Ingredient</a>
-					</Link>
+			<RecipeMenu selected='meal' />
+			<div className='by-meal-content-container'>
+				<div className='by-meal-img-container' id='breakfast-img'>
+					<h1>Breakfast</h1>
 				</div>
-
-				<RecipeList />
+				<div className='by-meal-img-container' id='lunch-img'>
+					<h1>Lunch</h1>
+				</div>
+				<div className='by-meal-img-container' id='dinner-img'>
+					<h1>Dinner</h1>
+				</div>
+				<div className='by-meal-img-container' id='dessert-img'>
+					<h1>Dessert</h1>
+				</div>
 			</div>
 		</div>
 	);

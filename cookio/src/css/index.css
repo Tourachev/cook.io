@@ -137,28 +137,119 @@ img {
 	padding: 5px;
 }
 
+.filter-selection-button-selected {
+	background-color: #f0f0f0 !important;
+}
+
 .filter-selection-row a:hover {
 	background-color: #f0f0f0;
+}
+
+/* Recipes by meal styling */
+
+.by-meal-content-container {
+	margin-left: 10vw;
+	width: 80vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.by-meal-img-container {
+	width: 300px;
+	height: 600px;
+	background-size: cover;
+	opacity: 0.7;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #f0f0f0;
+	transition: all 0.2s ease-out;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+
+	cursor: pointer;
+}
+
+.by-meal-img-container:hover {
+	transform: scale(1.05);
+}
+
+.by-meal-img-container h1 {
+	font-size: 3.5rem;
+
+	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
+}
+
+#breakfast-img {
+	background-image: url(../img/img6.jpg);
+}
+
+#lunch-img {
+	background-image: url(../img/img7.jpg);
+}
+#dinner-img {
+	background-image: url(../img/img8.jpg);
+}
+#dessert-img {
+	background-image: url(../img/img9.jpg);
+}
+
+/* Recipes By Ingredient Styling */
+
+.ingredient-content-container {
+	margin-left: 10vw;
+	width: 80vw;
+}
+
+.ingredient-button-container {
+	width: 100%;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.ingredient-button {
+	text-transform: capitalize;
+	margin: 5px;
+	flex-grow: 1;
+	flex-shrink: 1;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+	/* border-radius: 1% !important; */
+}
+.ingredients-logo {
+	margin-left: 14%;
 }
 
 /* Recipe Card Styling */
 
 .recipe-card-container {
-	width: 100%;
+	margin-left: 10vw;
+	width: 80vw;
+	/* width: 100%; */
 	display: flex;
-	justify-content: space-around;
+	/* justify-content: space-between; */
 	flex-direction: row;
 	flex-wrap: wrap;
 }
+
+/* .recipe-card-container::after {
+	content: '';
+	flex-grow: 1000000000;
+} */
 
 .card-container {
 	/* border: 1px solid black; */
 	background-color: #f8f8f8;
 	border-radius: 15px;
 	height: 340px;
-	width: 36vw;
-	margin: 10px;
+	width: 500px;
+	margin: 15px;
 	transition: all 0.2s ease-out;
+	flex: 3;
 	display: flex;
 	flex-direction: row;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
@@ -323,7 +414,7 @@ img {
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
 	.card-container {
-		width: 90vw;
+		/* width: 90vw; */
 	}
 }
 
@@ -331,7 +422,7 @@ img {
 
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
 	.card-container {
-		width: 90vw;
+		/* width: 90vw; */
 	}
 }
 
@@ -339,6 +430,6 @@ img {
 
 @media screen and (max-width: 1440px) {
 	.card-container {
-		width: 90vw;
+		/* width: 90vw; */
 	}
 }

@@ -22,16 +22,8 @@ const CreateRecipe = () => {
 	const authContext = useContext(AuthContext);
 	const { user } = authContext;
 
-	const [ ingredients, setIngredients ] = useState([
-		{ name: 'Potato', quantity: '2' }
-		// {name: 'Steak', quantity: '2 ounces'},
-		// {name: 'Onion', quantity: '1/4'}
-	]);
-	const [ instructions, setInstructions ] = useState([
-		{ instruction: 'Peel the potatoes' }
-		// {instruction: 'Chop the Onions'},
-		// {instruction: 'Grill the steak'}
-	]);
+	const [ ingredients, setIngredients ] = useState([ { name: 'Potato', quantity: '2' } ]);
+	const [ instructions, setInstructions ] = useState([ { instruction: 'Peel the potatoes' } ]);
 	const [ recipe, setRecipe ] = useState({
 		name: '',
 		ingredients: ingredients,
