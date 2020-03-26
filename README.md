@@ -31,8 +31,8 @@ Allows users to browse for cooking recipes. Choose recipe by meal. Add their own
 - Create a shopping cart based on the recipes you have saved.  
  
 # What is done
-- Boilerplate created.  
 - Design done.  
-
-# In production
-- Database design.  
+- Boilerplate created.  
+- Registration and Authentication
+- Recipes are pulled correctly from DB
+- Recipe Creation Form Done
