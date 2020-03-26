@@ -211,6 +211,11 @@ img {
 	justify-content: space-between;
 }
 
+/* .ingredient-button-container::after {
+	content: '';
+	flex-grow: 1000000000;
+} */
+
 .ingredient-button {
 	text-transform: capitalize;
 	margin: 5px;
