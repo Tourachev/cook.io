@@ -1,13 +1,29 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import axios from 'axios';
+import AuthContext from '../context/auth-context/AuthContext';
+import {useHistory} from 'react-router-dom';
 
 const LoginFields = props => {
+	const authContext = useContext(AuthContext);
+	let history = useHistory();
+
 	const [user, setUser] = useState({
 		email: '',
 		password: ''
 	});
+
+	const {email, password} = user;
+	const {login, error, clearErrors, isAuthenticated} = authContext;
+
+	useEffect(() => {
+		if (isAuthenticated) {
+			history.push('/recipes');
+		}
+
+		if (error === 'Invalid Credentials') {
+		}
+	}, [error, isAuthenticated, props.history]);
 
 	const handleChange = event => {
 		event.persist();
@@ -19,6 +35,10 @@ const LoginFields = props => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
+		login({
+			email,
+			password
+		});
 	};
 
 	return (

@@ -5,27 +5,36 @@ import AuthContext from '../context/auth-context/AuthContext';
 
 const Navbar = () => {
 	const authContext = useContext(AuthContext);
-	const {isAuthenticated} = authContext;
+	const {isAuthenticated, logout} = authContext;
+
+	const onSignOut = () => {
+		logout();
+	};
+
 	if (isAuthenticated) {
 		return (
 			<div>
 				<nav className='nav-logged-in'>
 					<div id='nav-left'>
+						<img src={Logo} alt='' />
+					</div>
+					<div id='nav-right'>
 						<Link to='/index'>
 							<a>Home</a>
+						</Link>
+
+						<Link to='/recipes'>
+							<a href=''>Recipes</a>
 						</Link>
 						<Link to='/myaccount'>
 							<a>My Account</a>
 						</Link>
-						<Link to='/recipes'>
-							<a href=''>Recipes</a>
+						<Link onClick={onSignOut}>
+							<a>Sign Out</a>
 						</Link>
-						<Link to='/aboutus'>
+						{/* <Link to='/aboutus'>
 							<a href=''>About Us</a>
-						</Link>
-					</div>
-					<div id='nav-right'>
-						<img src={Logo} alt='' />
+						</Link> */}
 					</div>
 				</nav>
 			</div>
