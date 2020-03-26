@@ -1,37 +1,44 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import AuthContext from '../context/auth-context/AuthContext';
+import {useHistory} from 'react-router-dom';
 
 const SignUpFields = props => {
-	const [inputs, setInputs] = useState({
+	const authContext = useContext(AuthContext);
+	let history = useHistory();
+
+	const [user, setUser] = useState({
 		email: '',
 		username: '',
 		password: '',
 		confirmPassword: ''
 	});
 
+	const {email, username, password, confirmPassword} = user;
+	const {register, error, clearErrors, isAuthenticated} = authContext;
+
+	useEffect(() => {
+		if (isAuthenticated) {
+			history.push('/recipes');
+		}
+
+		if (error === 'User already exists') {
+		}
+	}, [error, isAuthenticated, props.history]);
+
 	const handleChange = event => {
 		event.persist();
-		setInputs(inputs => ({
-			...inputs,
+		setUser(user => ({
+			...user,
 			[event.target.id]: event.target.value
 		}));
 	};
 
 	const handleSubmit = event => {
 		event.preventDefault();
-
-		const signUpInfo = {
-			email: this.state.email,
-			username: this.state.username,
-			password: this.state.password
-		};
-
-		axios.post('http://localhost:3001/signup', {signUpInfo}).then(res => {
-			console.log(res);
-			console.log(res.data);
-		});
+		register({email, username, password});
 	};
 	return (
 		<div>
@@ -42,7 +49,7 @@ const SignUpFields = props => {
 						<Form.Control
 							type='email'
 							placeholder='ramsey@me.com'
-							value={inputs.email}
+							value={user.email}
 							onChange={handleChange}
 							required
 						/>
@@ -53,7 +60,7 @@ const SignUpFields = props => {
 						<Form.Control
 							type='text'
 							placeholder='Username'
-							value={inputs.username}
+							value={user.username}
 							onChange={handleChange}
 							required
 						/>
@@ -65,7 +72,7 @@ const SignUpFields = props => {
 							type='password'
 							placeholder='Password'
 							required
-							value={inputs.password}
+							value={user.password}
 							onChange={handleChange}
 							pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
 							title='Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'
@@ -78,7 +85,7 @@ const SignUpFields = props => {
 							type='password'
 							placeholder='Connfirm password'
 							required
-							value={inputs.confirmPassword}
+							value={user.confirmPassword}
 							onChange={handleChange}
 						/>
 					</Form.Group>

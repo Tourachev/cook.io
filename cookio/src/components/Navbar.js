@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {useContext} from 'react';
+import {Link} from 'react-router-dom';
 import Logo from '../img/img3.jpg';
+import AuthContext from '../context/auth-context/AuthContext';
 
-const Navbar = (props) => {
-	if (props.isLoggedIn) {
+const Navbar = () => {
+	const authContext = useContext(AuthContext);
+	const {isAuthenticated} = authContext;
+	if (isAuthenticated) {
 		return (
 			<div>
 				<nav className='nav-logged-in'>
@@ -54,10 +57,6 @@ const Navbar = (props) => {
 			</nav>
 		</div>
 	);
-};
-
-Navbar.defaultProps = {
-	isLoggedIn: true
 };
 
 export default Navbar;

@@ -1,5 +1,5 @@
 import {createContext} from 'react';
 
-const authContext = authContext();
+const authContext = createContext();
 
 export default authContext;
