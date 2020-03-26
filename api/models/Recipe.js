@@ -6,7 +6,7 @@ const RecipeSchema = new mongoose.Schema({
 		required: true
 	},
 	ingredients: {
-		type: [{name: String, quantity: String}],
+		type: [ { name: String, quantity: String } ],
 		required: true
 	},
 	cooktime: {
@@ -25,12 +25,15 @@ const RecipeSchema = new mongoose.Schema({
 		type: Number,
 		default: 0
 	},
+	image: {
+		type: String
+	},
 	instructions: {
-		type: [{instruction: String}],
+		type: [ { instruction: String, instructionImage: String } ],
 		required: true
 	},
 	comments: {
-		type: [{author: String, comment: String}]
+		type: [ { author: String, comment: String } ]
 	},
 	author: {
 		type: String

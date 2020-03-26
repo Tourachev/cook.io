@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { MDBInput, MDBCol } from 'mdbreact';
 import RecipeList from '../../components/Recipe/RecipeList';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../context/auth-context/AuthContext';
 
 const RecipesMain = (props) => {
-	if (props.isLoggedIn) {
+	const authContext = useContext(AuthContext);
+	const { isAuthenticated } = authContext;
+
+	if (isAuthenticated) {
 		return (
 			<div>
 				<div className='recipe-container'>

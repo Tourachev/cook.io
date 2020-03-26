@@ -1,15 +1,11 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import {Route, Switch, BrowserRouter as Router} from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-
-// import context
-// import UserContext from '../context/user-context/UserContext';
-// import RecipeContext from '../context/recipe-context/RecipeContext';
+import PrivateRoute from '../components/routing/PrivateRoute';
 
 import RecipeState from '../context/recipe-context/RecipeState';
-import ContactState from '../context/auth-context/AuthState';
-
+import AuthState from '../context/auth-context/AuthState';
 import setAuthToken from '../utils/setAuthTokens';
 // import css
 import '../css/index.css';
@@ -34,7 +30,6 @@ import MyDiet from '../routes/MyAccount/MyDietRestrictions';
 import ChangeEmail from '../routes/MyAccount/ChangeEmail';
 import ChangePassword from '../routes/MyAccount/ChangePassword';
 import CreateRecipe from '../routes/Recipes/CreateRecipe';
-import AuthState from '../context/auth-context/AuthState';
 
 if (localStorage.token) {
 	setAuthToken(localStorage.token);
@@ -53,66 +48,18 @@ function App() {
 							<Route exact path='/aboutus' component={AboutUs} />
 							<Route exact path='/login' component={LogIn} />
 							<Route exact path='/signup' component={SignUp} />
-							<Route
-								exact
-								path='/recipes'
-								component={RecipesMain}
-							/>
-							<Route
-								exact
-								path='/recipe/:id'
-								component={RecipeDetail}
-							/>
-							<Route
-								exact
-								path='/newrecipe'
-								component={CreateRecipe}
-							/>
-							<Route
-								exact
-								path='/bymeal'
-								component={RecipesByMeal}
-							/>
-							<Route
-								exact
-								path='/byingredient'
-								component={RecipesByIngredient}
-							/>
-							<Route
-								exact
-								path='/myaccount/'
-								component={MyAccount}
-							/>
-							<Route
-								exact
-								path='/myaccount/recipes'
-								component={MyRecipes}
-							/>
-							<Route
-								exact
-								path='/myaccount/shoppingcart'
-								component={MyCart}
-							/>
-							<Route
-								exact
-								path='/myaccount/favorite'
-								component={MyFavorite}
-							/>
-							<Route
-								exact
-								path='/myaccount/diet'
-								component={MyDiet}
-							/>
-							<Route
-								exact
-								path='/myaccount/changeemail'
-								component={ChangeEmail}
-							/>
-							<Route
-								exact
-								path='/myaccount/changepassword'
-								component={ChangePassword}
-							/>
+							<Route exact path='/recipes' component={RecipesMain} />
+							<Route exact path='/recipe/:id' component={RecipeDetail} />
+							<PrivateRoute path='/newrecipe' component={CreateRecipe} />
+							<Route exact path='/bymeal' component={RecipesByMeal} />
+							<Route exact path='/byingredient' component={RecipesByIngredient} />
+							<PrivateRoute exact path='/myaccount/' component={MyAccount} />
+							<PrivateRoute exact path='/myaccount/recipes' component={MyRecipes} />
+							<PrivateRoute exact path='/myaccount/shoppingcart' component={MyCart} />
+							<PrivateRoute exact path='/myaccount/favorite' component={MyFavorite} />
+							<PrivateRoute exact path='/myaccount/diet' component={MyDiet} />
+							<PrivateRoute exact path='/myaccount/changeemail' component={ChangeEmail} />
+							<PrivateRoute exact path='/myaccount/changepassword' component={ChangePassword} />
 							<Route exact path='/*' component={NotFound} />
 						</Switch>
 					</Fragment>
