@@ -1,14 +1,16 @@
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-		'Droid Sans', 'Helvetica Neue', sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-weight: 300;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
 a {
@@ -178,7 +180,8 @@ img {
 .by-meal-img-container h1 {
 	font-size: 3.5rem;
 
-	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
+	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+		0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 
 #breakfast-img {
@@ -309,7 +312,7 @@ img {
 	/* padding: 2%; */
 	margin: 2%;
 	border-radius: 15px;
-	border: 1px solid lightslategray;
+	background-color: #f0f0f0;
 	min-width: 40%;
 	min-height: 40%;
 	display: flex;
@@ -320,6 +323,7 @@ img {
 
 .recipe-spec p {
 	font-size: 1.2em;
+	font-family: 'Gloria Hallelujah', cursive;
 }
 
 .recipe-spec-content {
@@ -327,6 +331,24 @@ img {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+
+.recipe-difficulty-easy {
+	background-color: #91f19d;
+}
+
+.recipe-difficulty-medium {
+	background-color: #ecf74c;
+}
+
+.recipe-difficulty-hard {
+	background-color: #f19191;
+}
+
+.rating-container {
+	margin-top: -7px;
+	margin-bottom: 7px;
+	text-align: center;
 }
 
 /* My Account style */
@@ -350,7 +372,7 @@ img {
 	min-width: 25%;
 	max: 25%;
 	padding-right: 1%;
-	border-right: 1px solid rgba(0, 0, 0, .1);
+	border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .myaccount-sidebar h3 {
@@ -374,12 +396,12 @@ img {
 	width: 80px;
 	height: 80px;
 	text-align: center;
-	background-color: rgba(0, 0, 0, .1);
+	background-color: rgba(0, 0, 0, 0.1);
 	transition: ease-in 0.3s all;
 }
 
 .avatar-container:hover {
-	background-color: rgba(0, 0, 0, .5);
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 #my-account-avatar {

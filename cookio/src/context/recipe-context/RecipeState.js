@@ -57,7 +57,7 @@ const RecipeState = props => {
 				],
 				cooktime: 20,
 				preptime: 10,
-				difficulty: 'Easy',
+				difficulty: 'Medium',
 				comments: []
 			},
 			{
@@ -89,7 +89,7 @@ const RecipeState = props => {
 				],
 				cooktime: 20,
 				preptime: 20,
-				difficulty: 'Easy',
+				difficulty: 'Hard',
 				comments: []
 			}
 		],

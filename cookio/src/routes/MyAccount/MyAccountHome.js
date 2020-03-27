@@ -88,8 +88,9 @@ const MyAccount = props => {
 						</Link>
 					</div>
 					<div className='myaccount-content container'>
-						{' '}
-						Dashboard
+						<h1 className='display-4 center-text'>
+							Recommended Recipes
+						</h1>
 					</div>{' '}
 				</div>
 			</div>
