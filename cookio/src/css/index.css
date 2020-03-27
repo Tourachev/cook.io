@@ -594,6 +594,26 @@ img {
 	margin-bottom: 2%;
 }
 
+/* Recipe Detail */
+
+.recipe-detail{
+	margin: 5% 5% 0% 5%;
+}
+
+.detail-img-container img{
+	max-width:500px;
+	max-height: 500px;
+}
+
+.recipe-detail-header{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.recipe-detail-header-left{
+	width: 60%;
+}
+
 /* Generic */
 
 .center-text {

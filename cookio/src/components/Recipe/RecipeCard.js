@@ -1,46 +1,50 @@
 import React, { Component, useState } from 'react';
 import temp from '../../img/img11.com.jpg';
 import StarRatings from 'react-star-ratings';
+import { Link } from 'react-router-dom';
 
 const RecipeCard = ({ recipeContent }) => {
-	const { name, cooktime, preptime, difficulty, ingredients } = recipeContent;
+	const { name, cooktime, preptime, difficulty, ingredients, id } = recipeContent;
 	return (
 		<div>
-			<div className='new-recipe-card-container'>
-				<div className='recipe-top-bar'>
-					<h2 className='text-center'>{name}</h2>
-					<div id='star-rating'>
-						<StarRatings
-							rating={4.5}
-							starRatedColor='black'
-							// changeRating={this.changeRating}
-							starDimension='30px'
-							starSpacing='1px'
-							numberOfStars={5}
-							name='rating'
-							id='star-rating'
-						/>
+			<Link to={`/recipe/${id}`}>			
+				<div className='new-recipe-card-container'>
+					<div className='recipe-top-bar'>
+						<h2 className='text-center'>{name}</h2>
+						<div id='star-rating'>
+							<StarRatings
+								rating={4.5}
+								starRatedColor='black'
+								// changeRating={this.changeRating}
+								starDimension='30px'
+								starSpacing='1px'
+								numberOfStars={5}
+								name='rating'
+								id='star-rating'
+							/>
+						</div>
+					</div>
+
+					<div className='recipe-time-circle'>
+						<h1 className='center-text'>{preptime + cooktime}</h1>
+						<h5 className='center-text'>mins</h5>
+					</div>
+
+					<div className='recipe-sidebar'>
+						<h4>Difficulty</h4>
+						<h5>{difficulty}</h5>
+						<h4>Cook Time</h4>
+						<h5>{cooktime} mins</h5>
+						<h4>Prep Time</h4>
+						<h5>{preptime} mins</h5>
+					</div>
+					<div className='recipe-image-holder'>
+						<img src={temp} alt='' />
 					</div>
 				</div>
-
-				<div className='recipe-time-circle'>
-					<h1 className='center-text'>{preptime + cooktime}</h1>
-					<h5 className='center-text'>mins</h5>
-				</div>
-
-				<div className='recipe-sidebar'>
-					<h4>Difficulty</h4>
-					<h5>{difficulty}</h5>
-					<h4>Cook Time</h4>
-					<h5>{cooktime} mins</h5>
-					<h4>Prep Time</h4>
-					<h5>{preptime} mins</h5>
-				</div>
-				<div className='recipe-image-holder'>
-					<img src={temp} alt='' />
-				</div>
-			</div>
+			</Link>
 		</div>
+
 		// 	<div className='card-container'>
 		// 	<div className='card-container-left'>
 		// 		<img src={temp} alt='' />
