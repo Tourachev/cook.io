@@ -4,6 +4,7 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import PrivateRoute from '../components/routing/PrivateRoute';
 import Alert from '../components/Alert';
+import AOS from 'aos'
 
 import RecipeState from '../context/recipe-context/RecipeState';
 import AuthState from '../context/auth-context/AuthState';
@@ -37,7 +38,10 @@ if (localStorage.token) {
 	setAuthToken(localStorage.token);
 }
 
+AOS.init()
+
 function App() {
+
 	return (
 		<AuthState>
 			<RecipeState>

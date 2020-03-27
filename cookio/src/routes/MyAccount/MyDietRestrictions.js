@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DefaultAvatar from '../../img/img5.png';
 import { Link } from 'react-router-dom';
+import { Form, Button, Col } from 'react-bootstrap';
 
 const MyAccount = (props) => {
 	const [ recipe, setRecipe ] = useState({ recipeID: props.match.params.id });
@@ -57,7 +58,44 @@ const MyAccount = (props) => {
 							</button>
 						</Link>
 					</div>
-					<div className='myaccount-content'> test</div>{' '}
+					<div className='myaccount-content container'>
+						<h1 className='display-4 center-text'>Dietary Restrictions</h1>
+						<h2 className='currently-empty'>Currently empty...</h2>
+						<hr />
+						<h1 className='display-4'>Add New Diet Restriction</h1>
+
+						<Form.Row>
+							<Form as={Col}>
+								<Form.Group controlId='exampleForm.SelectCustom'>
+									<Form.Label>Add Restriction:</Form.Label>
+									<Form.Control as='select' custom>
+										<option>Vegan</option>
+										<option>Vegetarian</option>
+										<option>Pescatarian</option>
+									</Form.Control>
+								</Form.Group>
+
+								<Button variant='primary' type='submit'>
+									Add +
+								</Button>
+							</Form>
+
+							<Form as={Col}>
+								<Form.Group controlId='exampleForm.SelectCustom'>
+									<Form.Label>Add Allergy:</Form.Label>
+									<Form.Control as='select' custom>
+										<option>Peanuts</option>
+										<option>Gluten</option>
+										<option>Shellfish</option>
+									</Form.Control>
+								</Form.Group>
+
+								<Button variant='primary' type='submit'>
+									Add +
+								</Button>
+							</Form>
+						</Form.Row>
+					</div>{' '}
 				</div>
 			</div>
 		</div>

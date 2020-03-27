@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DefaultAvatar from '../../img/img5.png';
 import { Link } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
 
 const MyAccount = (props) => {
 	const [ recipe, setRecipe ] = useState({ recipeID: props.match.params.id });
@@ -57,7 +58,29 @@ const MyAccount = (props) => {
 							</button>
 						</Link>
 					</div>
-					<div className='myaccount-content'> test</div>{' '}
+					<div className='myaccount-content container'>
+						<h1 className='display-4 center-text'>Change Password</h1>
+						<Form>
+							<Form.Group controlId='formBasicEmail'>
+								<Form.Label>Enter Old Password:</Form.Label>
+								<Form.Control type='password' placeholder='Enter old password' />
+							</Form.Group>
+
+							<Form.Group controlId='formBasicEmail'>
+								<Form.Label>Enter New Password:</Form.Label>
+								<Form.Control type='password' placeholder='Enter new password' />
+							</Form.Group>
+
+							<Form.Group controlId='formBasicEmail'>
+								<Form.Label>Confirm New Password:</Form.Label>
+								<Form.Control type='password' placeholder='Confirm new password' />
+							</Form.Group>
+
+							<Button variant='primary' type='submit'>
+								Submit
+							</Button>
+						</Form>
+					</div>{' '}
 				</div>
 			</div>
 		</div>

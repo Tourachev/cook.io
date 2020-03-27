@@ -10,16 +10,24 @@ const RecipesByMeal = () => {
 		<div>
 			<RecipeMenu selected='meal' />
 			<div className='by-meal-content-container'>
-				<div className='by-meal-img-container' id='breakfast-img'>
+				<div className='by-meal-img-container' id='breakfast-img' data-aos="fade-right"
+						data-aos-easing="linear"
+						data-aos-duration="900">
 					<h1>Breakfast</h1>
 				</div>
-				<div className='by-meal-img-container' id='lunch-img'>
+				<div className='by-meal-img-container' id='lunch-img' data-aos="fade-right"
+						data-aos-easing="linear"
+						data-aos-duration="900">
 					<h1>Lunch</h1>
 				</div>
-				<div className='by-meal-img-container' id='dinner-img'>
+				<div className='by-meal-img-container' id='dinner-img' data-aos="fade-right"
+						data-aos-easing="linear"
+						data-aos-duration="900">
 					<h1>Dinner</h1>
 				</div>
-				<div className='by-meal-img-container' id='dessert-img'>
+				<div className='by-meal-img-container' id='dessert-img' data-aos="fade-right"
+						data-aos-easing="linear"
+						data-aos-duration="900">
 					<h1>Dessert</h1>
 				</div>
 			</div>

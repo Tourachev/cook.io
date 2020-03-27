@@ -1,14 +1,26 @@
-import React, {Component, useState} from 'react';
+import React, { Component, useState } from 'react';
 import temp from '../../img/img11.com.jpg';
 import StarRatings from 'react-star-ratings';
 
-const RecipeCard = ({recipeContent}) => {
-	const {name, cooktime, preptime, difficulty, ingredients} = recipeContent;
+const RecipeCard = ({ recipeContent }) => {
+	const { name, cooktime, preptime, difficulty, ingredients } = recipeContent;
 	return (
 		<div>
 			<div className='new-recipe-card-container'>
 				<div className='recipe-top-bar'>
 					<h2 className='text-center'>{name}</h2>
+					<div id='star-rating'>
+						<StarRatings
+							rating={4.5}
+							starRatedColor='black'
+							// changeRating={this.changeRating}
+							starDimension='30px'
+							starSpacing='1px'
+							numberOfStars={5}
+							name='rating'
+							id='star-rating'
+						/>
+					</div>
 				</div>
 
 				<div className='recipe-time-circle'>

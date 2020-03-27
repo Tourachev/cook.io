@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DefaultAvatar from '../../img/img5.png';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const MyAccount = (props) => {
 	const [ recipe, setRecipe ] = useState({ recipeID: props.match.params.id });
@@ -57,7 +58,21 @@ const MyAccount = (props) => {
 							</button>
 						</Link>
 					</div>
-					<div className='myaccount-content'> test</div>{' '}
+					<div className='myaccount-content container'>
+						<h1 className='display-4 center-text'>My Shopping Cart</h1>
+						<h2 className='currently-empty'>Currently empty...</h2>
+						<hr />
+						<h1 className='display-4 '> Add Recipes To Your Cart </h1>
+						<p>
+							When you add a recipe to your cart it will display all the ingredients needed to purchase on
+							this page! Woah!{' '}
+						</p>
+						<Link to='/recipes'>
+							<a href='#' className='go-button'>
+								Explore!
+							</a>
+						</Link>
+					</div>{' '}
 				</div>
 			</div>
 		</div>

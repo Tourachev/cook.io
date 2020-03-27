@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DefaultAvatar from '../../img/img5.png';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const MyAccount = (props) => {
 	const [ recipe, setRecipe ] = useState({ recipeID: props.match.params.id });
@@ -57,7 +58,18 @@ const MyAccount = (props) => {
 							</button>
 						</Link>
 					</div>
-					<div className='myaccount-content container'> test</div>{' '}
+					<div className='myaccount-content container'>
+						<h1 className='display-4 center-text'>My Recipes</h1>
+						<h2 className='currently-empty'>Currently empty...</h2>
+						<hr />
+						<h1 className='display-4 '> Create A New Recipe Now! </h1>
+						<p>Feel like you know a great recipe? Click the button to get started</p>
+						<Link to='/newrecipe'>
+							<a href='#' className='go-button'>
+								Let's go!
+							</a>
+						</Link>
+					</div>{' '}
 				</div>
 			</div>
 		</div>
