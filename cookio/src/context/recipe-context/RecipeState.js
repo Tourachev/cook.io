@@ -1,10 +1,16 @@
-import React, { useReducer } from 'react';
+import React, {useReducer} from 'react';
 import RecipeContext from './RecipeContext';
 import RecipeReducer from './RecipeReducer';
-import { ADD_RECIPE, DELETE_RECIPE, UPDATE_RECIPE, FILTER_RECIPE, CLEAR_FILTER } from '../types';
-import { v4 as uuidv4 } from 'uuid';
+import {
+	ADD_RECIPE,
+	DELETE_RECIPE,
+	UPDATE_RECIPE,
+	FILTER_RECIPE,
+	CLEAR_FILTER
+} from '../types';
+import {v4 as uuidv4} from 'uuid';
 
-const RecipeState = (props) => {
+const RecipeState = props => {
 	const InitialState = {
 		recipes: [
 			{
@@ -31,7 +37,18 @@ const RecipeState = (props) => {
 				cooktime: 30,
 				preptime: 10,
 				difficulty: 'Easy',
-				comments: []
+				comments: [],
+				instructions: [
+					{
+						instruction: 'Do this, do that'
+					},
+					{
+						instruction: 'Do this, do that'
+					},
+					{
+						instruction: 'Do this, do this'
+					}
+				]
 			},
 			{
 				id: 1,
@@ -52,7 +69,18 @@ const RecipeState = (props) => {
 				cooktime: 20,
 				preptime: 10,
 				difficulty: 'Medium',
-				comments: []
+				comments: [],
+				instructions: [
+					{
+						instruction: 'Do this, do that'
+					},
+					{
+						instruction: 'Do this, do that'
+					},
+					{
+						instruction: 'Do this, do this'
+					}
+				]
 			},
 			{
 				id: 2,
@@ -68,7 +96,18 @@ const RecipeState = (props) => {
 				cooktime: 20,
 				preptime: 20,
 				difficulty: 'Easy',
-				comments: []
+				comments: [],
+				instructions: [
+					{
+						instruction: 'Do this, do that'
+					},
+					{
+						instruction: 'Do this, do that'
+					},
+					{
+						instruction: 'Do this, do this'
+					}
+				]
 			},
 			{
 				id: 4,
@@ -154,15 +193,15 @@ const RecipeState = (props) => {
 		isLoading: false
 	};
 
-	const [ state, dispatch ] = useReducer(RecipeReducer, InitialState);
+	const [state, dispatch] = useReducer(RecipeReducer, InitialState);
 
 	// Fetch all Recipes
 
 	// Add Recipe
-	const addRecipe = (recipe) => {
+	const addRecipe = recipe => {
 		console.log('Fired');
 		recipe.id = uuidv4();
-		dispatch({ type: ADD_RECIPE, payload: recipe });
+		dispatch({type: ADD_RECIPE, payload: recipe});
 	};
 
 	// Delete Recipe

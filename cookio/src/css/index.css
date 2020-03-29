@@ -1,14 +1,16 @@
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-		'Droid Sans', 'Helvetica Neue', sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-weight: 300;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
 a {
@@ -178,7 +180,8 @@ img {
 .by-meal-img-container h1 {
 	font-size: 3.5rem;
 
-	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
+	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+		0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 
 #breakfast-img {
@@ -240,7 +243,7 @@ img {
 
 .recipe-card-container {
 	margin-left: 3vw;
-	width: 96vw;
+	width: 97vw;
 	/* width: 100%; */
 	display: flex;
 	justify-content: space-around;
@@ -268,17 +271,17 @@ img {
 .new-recipe-card-container:hover .recipe-sidebar {
 	color: #f0f0f0;
 	transition: ease-out 0.3s all;
-	transform: translate(-110px);
+	transform: translate(-120px);
 }
 
 .new-recipe-card-container:hover {
 	transition: ease-out 0.3s all;
-	transform: translate(60px);
+	transform: translate(50px);
 }
 
 .new-recipe-card-container:hover .recipe-top-bar {
 	transition: ease-out 0.3s all;
-	transform: translate(76px);
+	transform: translate(70px);
 }
 
 .recipe-sidebar {
@@ -472,6 +475,7 @@ img {
 /* My Account style */
 
 .myaccount-container {
+	height: 80vh;
 	margin: 5%;
 }
 
@@ -557,7 +561,7 @@ img {
 	overflow: hidden;
 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
 	border-bottom: solid 3px #bd6565;
-	transition: .4s;
+	transition: 0.4s;
 }
 
 .go-button:active {
@@ -596,28 +600,52 @@ img {
 
 /* Recipe Detail */
 
-.recipe-detail{
+.recipe-detail {
 	margin: 5% 5% 0% 5%;
 }
 
-.detail-img-container img{
-	max-width:500px;
+.detail-img-container img {
+	max-width: 500px;
 	max-height: 500px;
 }
 
-.recipe-detail-header{
+.recipe-detail-header {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
-.recipe-detail-header-left{
+.recipe-detail-header-left {
 	width: 60%;
+}
+
+.recipe-detail-specs {
+	margin-top: 5%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.recipe-detail-specs * {
+	font-weight: 300;
 }
 
 /* Generic */
 
 .center-text {
 	text-align: center;
+}
+
+.enlarged-text {
+	font-size: 1.7rem;
+}
+
+/* Footer styling */
+
+.footer-container {
+	margin-top: 5vh;
+	padding: 10vh 8vw 1vw 8vw;
+	background-color: #3e4551 !important;
+	color: white;
 }
 
 /* iPhone X media */
