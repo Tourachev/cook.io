@@ -20,7 +20,7 @@ export default (state, action) => {
 		case GET_ONE_RECIPE:
 			return {
 				...state,
-				recipes: action.payload,
+				recipe: action.payload,
 				loading: false
 			};
 		case ADD_RECIPE:

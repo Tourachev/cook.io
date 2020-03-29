@@ -16,7 +16,8 @@ import axios from 'axios';
 const RecipeState = (props) => {
 	const InitialState = {
 		recipes: [],
-		isLoading: false
+		recipe: null,
+		isLoading: true
 	};
 
 	const [ state, dispatch ] = useReducer(RecipeReducer, InitialState);
@@ -88,6 +89,7 @@ const RecipeState = (props) => {
 			value={{
 				recipes: state.recipes,
 				error: state.error,
+				recipe: state.recipe,
 				addRecipe,
 				deleteRecipe,
 				getRecipes,

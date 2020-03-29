@@ -3,6 +3,7 @@ import axios from 'axios';
 import RecipeCard from './RecipeCard';
 import RecipeContext from '../../context/recipe-context/RecipeContext';
 import temp from '../../img/img11.com.jpg';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const RecipeList = (props) => {
 	// const [ recipes, setRecipes ] = useState({});
@@ -17,9 +18,13 @@ const RecipeList = (props) => {
 
 	return (
 		<div>
-			<div className='recipe-card-container'>
-				{recipes.map((recipe) => <RecipeCard recipeContent={recipe} />)}
-			</div>
+			{recipes !== [] && !loading ? (
+				<div className='recipe-card-container'>
+					{recipes.map((recipe) => <RecipeCard recipeContent={recipe} />)}
+				</div>
+			) : (
+				<LinearProgress />
+			)}
 		</div>
 	);
 };
