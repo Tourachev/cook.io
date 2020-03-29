@@ -16,11 +16,13 @@ import InstructionForm from '../../components/Recipe/InstructionForm';
 import axios from 'axios';
 import RecipeContext from '../../context/recipe-context/RecipeContext';
 import AuthContext from '../../context/auth-context/AuthContext';
+import { useHistory } from 'react-router-dom';
 
 const CreateRecipe = () => {
 	const recipeContext = useContext(RecipeContext);
 	const authContext = useContext(AuthContext);
 	const { user } = authContext;
+	let history = useHistory();
 
 	const [ ingredients, setIngredients ] = useState([ { name: 'Potato', quantity: '2' } ]);
 	const [ instructions, setInstructions ] = useState([ { instruction: 'Peel the potatoes' } ]);
@@ -65,15 +67,7 @@ const CreateRecipe = () => {
 		e.preventDefault();
 		if (!recipe) return;
 		recipeContext.addRecipe(recipe);
-
-		// axios.post('http://localhost:5000/api/recipes/', {
-		// 	name: recipe.name,
-		// 	ingredients: recipe.ingredients,
-		// 	cooktime: recipe.cooktime,
-		// 	preptime: recipe.cooktime,
-		// 	difficulty: recipe.difficulty,
-		// 	instructions: recipe.instructions
-		// });
+		history.push('/recipes');
 
 		setRecipe({
 			name: '',

@@ -1,11 +1,4 @@
-import {
-	GET_RECIPES,
-	ADD_RECIPE,
-	DELETE_RECIPE,
-	UPDATE_RECIPE,
-	FILTER_RECIPE,
-	CLEAR_FILTER
-} from '../types';
+import { GET_RECIPES, ADD_RECIPE, DELETE_RECIPE, UPDATE_RECIPE, FILTER_RECIPE, CLEAR_FILTER } from '../types';
 
 export default (state, action) => {
 	switch (action.type) {
@@ -18,35 +11,27 @@ export default (state, action) => {
 		case ADD_RECIPE:
 			return {
 				...state,
-				recipes: [action.payload, ...state.recipes],
+				recipes: [ action.payload, ...state.recipes ],
 				loading: false
 			};
 		case UPDATE_RECIPE:
 			return {
 				...state,
-				contacts: state.contacts.map(contact =>
-					contact._id === action.payload._id
-						? action.payload
-						: contact
-				),
+				recipes: state.recipes.map((recipe) => (recipe._id === action.payload._id ? action.payload : recipe)),
 				loading: false
 			};
 		case DELETE_RECIPE:
 			return {
 				...state,
-				contacts: state.contacts.filter(
-					contact => contact._id !== action.payload
-				),
+				recipes: state.recipes.filter((recipe) => recipe.id !== action.payload),
 				loading: false
 			};
 		case FILTER_RECIPE:
 			return {
 				...state,
-				filtered: state.contacts.filter(contact => {
+				filtered: state.recipes.filter((recipe) => {
 					const regex = new RegExp(`${action.payload}`, 'gi');
-					return (
-						contact.name.match(regex) || contact.email.match(regex)
-					);
+					return recipe.name.match(regex) || recipe.email.match(regex);
 				})
 			};
 		case CLEAR_FILTER:

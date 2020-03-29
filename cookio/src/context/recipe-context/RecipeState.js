@@ -1,16 +1,10 @@
-import React, {useReducer} from 'react';
+import React, { useReducer } from 'react';
 import RecipeContext from './RecipeContext';
 import RecipeReducer from './RecipeReducer';
-import {
-	ADD_RECIPE,
-	DELETE_RECIPE,
-	UPDATE_RECIPE,
-	FILTER_RECIPE,
-	CLEAR_FILTER
-} from '../types';
-import {v4 as uuidv4} from 'uuid';
+import { ADD_RECIPE, DELETE_RECIPE, UPDATE_RECIPE, FILTER_RECIPE, CLEAR_FILTER } from '../types';
+import { v4 as uuidv4 } from 'uuid';
 
-const RecipeState = props => {
+const RecipeState = (props) => {
 	const InitialState = {
 		recipes: [
 			{
@@ -126,7 +120,7 @@ const RecipeState = props => {
 				comments: []
 			},
 			{
-				id: 4,
+				id: 5,
 				rating: 0,
 				name: 'Roasted Pork',
 				ingredients: [
@@ -142,7 +136,7 @@ const RecipeState = props => {
 				comments: []
 			},
 			{
-				id: 4,
+				id: 6,
 				rating: 0,
 				name: 'Roasted Pork',
 				ingredients: [
@@ -158,7 +152,7 @@ const RecipeState = props => {
 				comments: []
 			},
 			{
-				id: 4,
+				id: 7,
 				rating: 0,
 				name: 'Roasted Pork',
 				ingredients: [
@@ -193,19 +187,20 @@ const RecipeState = props => {
 		isLoading: false
 	};
 
-	const [state, dispatch] = useReducer(RecipeReducer, InitialState);
+	const [ state, dispatch ] = useReducer(RecipeReducer, InitialState);
 
 	// Fetch all Recipes
 
 	// Add Recipe
-	const addRecipe = recipe => {
-		console.log('Fired');
+	const addRecipe = (recipe) => {
 		recipe.id = uuidv4();
-		dispatch({type: ADD_RECIPE, payload: recipe});
+		dispatch({ type: ADD_RECIPE, payload: recipe });
 	};
 
 	// Delete Recipe
-
+	const deleteRecipe = (id) => {
+		dispatch({ type: DELETE_RECIPE, payload: id });
+	};
 	// Update Recipe
 
 	// Search The Recipes
@@ -224,7 +219,8 @@ const RecipeState = props => {
 		<RecipeContext.Provider
 			value={{
 				recipes: state.recipes,
-				addRecipe
+				addRecipe,
+				deleteRecipe
 			}}
 		>
 			{props.children}
