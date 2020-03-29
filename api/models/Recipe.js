@@ -35,9 +35,6 @@ const RecipeSchema = new mongoose.Schema({
 	comments: {
 		type: [ { author: String, comment: String } ]
 	},
-	author: {
-		type: String
-	},
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'users'

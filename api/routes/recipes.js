@@ -26,8 +26,9 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
 	try {
-		const recipes = await Recipe.findById(req.params.id);
-		res.json(recipes);
+		const recipe = await Recipe.findOne({ _id: req.params.id });
+		console.log(req.params.id);
+		res.json(recipe);
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).send('Server Error');
@@ -53,15 +54,11 @@ router.post(
 	],
 	async (req, res, next) => {
 		const errors = validationResult(req);
-		console.log(req.body);
-		console.log(errors);
 		// Return the errors if invalid format.
 		if (!errors.isEmpty()) {
 			return res.status(400).json({ errors: errors.array() });
 		}
-		console.log(req.body);
-		const { name, ingredients, cooktime, preptime, difficulty, instructions } = req.body;
-
+		const { name, ingredients, cooktime, preptime, difficulty, instructions, user } = req.body;
 		try {
 			const newRecipe = new Recipe({
 				name,
@@ -69,7 +66,8 @@ router.post(
 				cooktime,
 				preptime,
 				difficulty,
-				instructions
+				instructions,
+				user: req.user.id
 			});
 
 			const recipe = await newRecipe.save();

@@ -5,23 +5,17 @@ import temp from '../../img/img11.com.jpg';
 import StarRatings from 'react-star-ratings';
 import { useHistory } from 'react-router-dom';
 
-const RecipeDetail = (props) => {
+const RecipeDetailCard = (props) => {
 	let history = useHistory();
 	const recipeContext = useContext(RecipeContext);
 	const { recipes, deleteRecipe, getOneRecipe } = recipeContext;
-
-	const { name, cooktime, preptime, difficulty, ingredients, id, instructions, rating } = recipes;
-
 	console.log(recipes);
+	const { name, cooktime, preptime, difficulty, ingredients, id, instructions, rating } = recipes;
 
 	const handleDelete = () => {
 		deleteRecipe(id);
 		history.push('/recipes');
 	};
-
-	useEffect(() => {
-		getOneRecipe(props.match.params.id);
-	}, []);
 
 	return (
 		<div>
@@ -79,4 +73,4 @@ const RecipeDetail = (props) => {
 	);
 };
 
-export default RecipeDetail;
+export default RecipeDetailCard;

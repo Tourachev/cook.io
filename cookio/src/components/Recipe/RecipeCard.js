@@ -4,10 +4,10 @@ import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom';
 
 const RecipeCard = ({ recipeContent }) => {
-	const { name, cooktime, preptime, difficulty, ingredients, id } = recipeContent;
+	const { name, cooktime, preptime, difficulty, ingredients, _id } = recipeContent;
 	return (
 		<div>
-			<Link to={`/recipe/${id}`}>			
+			<Link to={`/recipe/${_id}`}>
 				<div className='new-recipe-card-container'>
 					<div className='recipe-top-bar'>
 						<h2 className='text-center'>{name}</h2>
