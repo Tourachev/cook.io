@@ -4,11 +4,11 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 const IngredientForm = ({addIngredient}) => {
-	const [value, setValue] = useState({name: '', quantity: ''});
+	const [ingredient, setIngredient] = useState({name: '', quantity: ''});
 
 	const handleChange = event => {
 		event.persist();
-		setValue(inputs => ({
+		setIngredient(inputs => ({
 			...inputs,
 			[event.target.id]: event.target.value
 		}));
@@ -16,9 +16,9 @@ const IngredientForm = ({addIngredient}) => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		if (!value) return;
-		addIngredient(value);
-		setValue({name: '', quantity: ''});
+		// if (!value) return;
+		addIngredient(ingredient);
+		setIngredient({name: '', quantity: ''});
 	};
 
 	return (
@@ -30,7 +30,7 @@ const IngredientForm = ({addIngredient}) => {
 						<Form.Control
 							type='text'
 							placeholder='Sirloin'
-							value={value.name}
+							value={ingredient.name}
 							onChange={handleChange}
 						/>
 					</Form.Group>
@@ -40,7 +40,7 @@ const IngredientForm = ({addIngredient}) => {
 						<Form.Control
 							type='text'
 							placeholder='10 o.z.'
-							value={value.quantity}
+							value={ingredient.quantity}
 							onChange={handleChange}
 						/>
 					</Form.Group>

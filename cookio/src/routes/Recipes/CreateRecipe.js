@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
@@ -16,17 +16,17 @@ import InstructionForm from '../../components/Recipe/InstructionForm';
 import axios from 'axios';
 import RecipeContext from '../../context/recipe-context/RecipeContext';
 import AuthContext from '../../context/auth-context/AuthContext';
-import { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 const CreateRecipe = () => {
 	const recipeContext = useContext(RecipeContext);
 	const authContext = useContext(AuthContext);
-	const { user } = authContext;
+	const {user} = authContext;
 	let history = useHistory();
 
-	const [ ingredients, setIngredients ] = useState([ { name: 'Potato', quantity: '2' } ]);
-	const [ instructions, setInstructions ] = useState([ { instruction: 'Peel the potatoes' } ]);
-	const [ recipe, setRecipe ] = useState({
+	const [ingredients, setIngredients] = useState([]);
+	const [instructions, setInstructions] = useState([]);
+	const [recipe, setRecipe] = useState({
 		name: '',
 		ingredients: ingredients,
 		cooktime: '',
@@ -35,40 +35,66 @@ const CreateRecipe = () => {
 		instructions: instructions
 	});
 
-	const addIngredient = (newIngredient) => {
-		const newIngredients = [ ...ingredients, { name: newIngredient.name, quantity: newIngredient.quantity } ];
+	useEffect(() => {
+		console.log(ingredients);
+		console.log(instructions);
+		console.log(recipe);
+	}, [ingredients, instructions, recipe]);
+
+	const addIngredient = newIngredient => {
+		const newIngredients = [
+			...ingredients,
+			{name: newIngredient.name, quantity: newIngredient.quantity}
+		];
 		setIngredients(newIngredients);
+		setRecipe(prevState => {
+			return {...prevState, ingredients: newIngredients};
+		});
 	};
 
-	const deleteIngredient = (ingredientIndex) => {
-		const newIngredients = ingredients.filter((_, index) => index !== ingredientIndex);
+	const deleteIngredient = ingredientIndex => {
+		const newIngredients = ingredients.filter(
+			(_, index) => index !== ingredientIndex
+		);
 		setIngredients(newIngredients);
+		setRecipe(prevState => {
+			return {...prevState, ingredients: newIngredients};
+		});
 	};
 
-	const addInstruction = (newInstruction) => {
-		const newInstructions = [ ...instructions, { instruction: newInstruction.instruction } ];
+	const addInstruction = newInstruction => {
+		const newInstructions = [
+			...instructions,
+			{instruction: newInstruction.instruction}
+		];
 		setInstructions(newInstructions);
+		setRecipe(prevState => {
+			return {...prevState, instructions: newInstructions};
+		});
 	};
 
-	const deleteInstruction = (instructionIndex) => {
-		const newInstructions = instructions.filter((_, index) => index !== instructionIndex);
+	const deleteInstruction = instructionIndex => {
+		const newInstructions = instructions.filter(
+			(_, index) => index !== instructionIndex
+		);
 		setInstructions(newInstructions);
+		setRecipe(prevState => {
+			return {...prevState, instructions: newInstructions};
+		});
 	};
 
-	const handleRecipeChange = (event) => {
+	const handleRecipeChange = event => {
 		event.persist();
-		setRecipe((inputs) => ({
+		setRecipe(inputs => ({
 			...inputs,
 			[event.target.id]: event.target.value
 		}));
 	};
 
-	const handleRecipeSubmit = (e) => {
+	const handleRecipeSubmit = e => {
 		e.preventDefault();
-		if (!recipe) return;
+		// if (!recipe) return;
 		recipeContext.addRecipe(recipe);
-		history.push('/recipes');
-
 		setRecipe({
 			name: '',
 			ingredients: ingredients,
@@ -77,6 +103,7 @@ const CreateRecipe = () => {
 			difficulty: '',
 			instructions: instructions
 		});
+		// history.push('/recipes');
 	};
 	return (
 		<div>
@@ -85,24 +112,43 @@ const CreateRecipe = () => {
 				<Form onSubmit={handleRecipeSubmit}>
 					<Form.Group controlId='name'>
 						<Form.Label>Name</Form.Label>
-						<Form.Control type='text' placeholder='Enter Name' required onChange={handleRecipeChange} />
+						<Form.Control
+							type='text'
+							placeholder='Enter Name'
+							required
+							onChange={handleRecipeChange}
+						/>
 					</Form.Group>
 
 					<Form.Row>
 						<Form.Group as={Col} controlId='cooktime'>
 							<Form.Label>Cook Time in Minutes: </Form.Label>
-							<Form.Control type='number' placeholder='10' onChange={handleRecipeChange} required />
+							<Form.Control
+								type='number'
+								placeholder='10'
+								onChange={handleRecipeChange}
+								required
+							/>
 						</Form.Group>
 
 						<Form.Group as={Col} controlId='preptime'>
 							<Form.Label>Prep Time in Minutes: </Form.Label>
-							<Form.Control type='number' placeholder='10' onChange={handleRecipeChange} required />
+							<Form.Control
+								type='number'
+								placeholder='10'
+								onChange={handleRecipeChange}
+								required
+							/>
 						</Form.Group>
 					</Form.Row>
 
 					<Form.Group controlId='difficulty'>
 						<Form.Label>Difficulty</Form.Label>
-						<Form.Control as='select' onChange={handleRecipeChange} required>
+						<Form.Control
+							as='select'
+							onChange={handleRecipeChange}
+							required
+						>
 							<option value='Easy' selected>
 								Easy
 							</option>
@@ -133,13 +179,27 @@ const CreateRecipe = () => {
 								<TableBody>
 									{ingredients.map((recipe, index) => (
 										<TableRow key={index}>
-											<TableCell component='th' scope='row'>
+											<TableCell
+												component='th'
+												scope='row'
+											>
 												{recipe.name}
 											</TableCell>
-											<TableCell align='right'>{recipe.quantity}</TableCell>
 											<TableCell align='right'>
-												<IconButton edge='end' aria-label='comments'>
-													<DeleteIcon onClick={() => deleteIngredient(index)} />
+												{recipe.quantity}
+											</TableCell>
+											<TableCell align='right'>
+												<IconButton
+													edge='end'
+													aria-label='comments'
+												>
+													<DeleteIcon
+														onClick={() =>
+															deleteIngredient(
+																index
+															)
+														}
+													/>
 												</IconButton>
 											</TableCell>
 										</TableRow>
@@ -163,15 +223,27 @@ const CreateRecipe = () => {
 												<h4>Step {index + 1}</h4>
 											</TableCell>
 											<TableCell align='right'>
-												<IconButton edge='end' aria-label='comments'>
-													<DeleteIcon onClick={() => deleteInstruction(index)} />
+												<IconButton
+													edge='end'
+													aria-label='comments'
+												>
+													<DeleteIcon
+														onClick={() =>
+															deleteInstruction(
+																index
+															)
+														}
+													/>
 												</IconButton>
 											</TableCell>
 										</TableRow>
 									</TableHead>
 									<TableBody>
 										<TableRow key={index}>
-											<TableCell component='th' scope='row'>
+											<TableCell
+												component='th'
+												scope='row'
+											>
 												{instruction.instruction}
 											</TableCell>
 										</TableRow>
@@ -182,7 +254,12 @@ const CreateRecipe = () => {
 					</div>
 
 					<hr />
-					<Button variant='outline-success' size='lg' block type='submit'>
+					<Button
+						variant='outline-success'
+						size='lg'
+						block
+						type='submit'
+					>
 						Create!
 					</Button>
 				</Form>

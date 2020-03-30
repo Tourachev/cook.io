@@ -16,7 +16,7 @@ const InstructionForm = ({addInstruction}) => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		if (!value) return;
+		// if (!value) return;
 		addInstruction(value);
 		setValue({instruction: ''});
 	};

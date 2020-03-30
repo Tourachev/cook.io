@@ -1,16 +1,22 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 import RecipeContext from '../../context/recipe-context/RecipeContext';
+import AuthContext from '../../context/auth-context/AuthContext';
 import temp from '../../img/img11.com.jpg';
 import StarRatings from 'react-star-ratings';
-import { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-const RecipeDetail = (props) => {
+const RecipeDetail = props => {
 	let history = useHistory();
 
 	const recipeContext = useContext(RecipeContext);
-	const { recipe, deleteRecipe, loading, getOneRecipe } = recipeContext;
+	const authContext = useContext(AuthContext);
+
+	const {user} = authContext;
+	const {recipe, deleteRecipe, loading, getOneRecipe} = recipeContext;
+
+	console.log(user);
 
 	useEffect(() => {
 		getOneRecipe(props.match.params.id);
@@ -32,9 +38,18 @@ const RecipeDetail = (props) => {
 							<div className='flex-row-between'>
 								<h1 className='display-3'>{recipe.name}</h1>
 								<div id='star-rating-detail'>
-									<button className=' btn btn-danger' id='delete-button' onClick={handleDelete}>
-										Delete
-									</button>
+									{user !== null &&
+									user._id == recipe.user ? (
+										<button
+											className=' btn btn-danger'
+											id='delete-button'
+											onClick={handleDelete}
+										>
+											Delete
+										</button>
+									) : (
+										<span></span>
+									)}
 								</div>
 							</div>
 							<StarRatings
@@ -54,8 +69,14 @@ const RecipeDetail = (props) => {
 								</div>
 
 								<div>
-									<h3>Number of Ingredients: {recipe.ingredients.length}</h3>
-									<h3>Number of Instructions: {recipe.instructions.length}</h3>
+									<h3>
+										Number of Ingredients:{' '}
+										{recipe.ingredients.length}
+									</h3>
+									<h3>
+										Number of Instructions:{' '}
+										{recipe.instructions.length}
+									</h3>
 								</div>
 							</div>
 						</div>
@@ -65,12 +86,17 @@ const RecipeDetail = (props) => {
 					</div>
 					<hr />
 					<h1 className='display-3 center-text'>Instructions</h1>
-					{recipe.instructions.map((instruction) => (
+					{recipe.instructions.map(instruction => (
 						<div>
 							{' '}
-							<h1 className='display-4'>Step {recipe.instructions.indexOf(instruction) + 1}</h1>
+							<h1 className='display-4'>
+								Step{' '}
+								{recipe.instructions.indexOf(instruction) + 1}
+							</h1>
 							<hr />
-							<p className='enlarged-text'>{instruction.instruction}</p>
+							<p className='enlarged-text'>
+								{instruction.instruction}
+							</p>
 						</div>
 					))}
 					<hr />
