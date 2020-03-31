@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, {useReducer} from 'react';
 import RecipeContext from './RecipeContext';
 import RecipeReducer from './RecipeReducer';
 import {
@@ -9,18 +9,19 @@ import {
 	CLEAR_FILTER,
 	CONTACT_ERROR,
 	GET_RECIPES,
-	GET_ONE_RECIPE
+	GET_ONE_RECIPE,
+	GET_MY_RECIPES
 } from '../types';
 import axios from 'axios';
 
-const RecipeState = (props) => {
+const RecipeState = props => {
 	const InitialState = {
 		recipes: [],
 		recipe: null,
 		isLoading: true
 	};
 
-	const [ state, dispatch ] = useReducer(RecipeReducer, InitialState);
+	const [state, dispatch] = useReducer(RecipeReducer, InitialState);
 
 	// Fetch all Recipes
 	const getRecipes = async () => {
@@ -39,7 +40,7 @@ const RecipeState = (props) => {
 	};
 
 	// Fetch one Recipe
-	const getOneRecipe = async (id) => {
+	const getOneRecipe = async id => {
 		try {
 			const res = await axios.get('/api/recipes/' + id);
 			dispatch({
@@ -54,8 +55,24 @@ const RecipeState = (props) => {
 		}
 	};
 
+	// Fetch Recipes that the user owns
+	const getMyRecipes = async userID => {
+		try {
+			const res = await axios.get('/api/recipes/user/' + userID);
+			dispatch({
+				type: GET_MY_RECIPES,
+				payload: res.data
+			});
+		} catch (err) {
+			dispatch({
+				type: CONTACT_ERROR,
+				payload: err.response.msg
+			});
+		}
+	};
+
 	// Add Recipe
-	const addRecipe = async (recipe) => {
+	const addRecipe = async recipe => {
 		const config = {
 			headers: {
 				'Content-Type': 'application/json'
@@ -64,15 +81,15 @@ const RecipeState = (props) => {
 		try {
 			const res = await axios.post('/api/recipes', recipe, config);
 
-			dispatch({ type: ADD_RECIPE, payload: res });
+			dispatch({type: ADD_RECIPE, payload: res});
 		} catch (error) {
-			dispatch({ type: CONTACT_ERROR, payload: error.response.msg });
+			dispatch({type: CONTACT_ERROR, payload: error.response.msg});
 		}
 	};
 
 	// Delete Recipe
-	const deleteRecipe = (id) => {
-		dispatch({ type: DELETE_RECIPE, payload: id });
+	const deleteRecipe = id => {
+		dispatch({type: DELETE_RECIPE, payload: id});
 	};
 	// Update Recipe
 
@@ -93,7 +110,8 @@ const RecipeState = (props) => {
 				addRecipe,
 				deleteRecipe,
 				getRecipes,
-				getOneRecipe
+				getOneRecipe,
+				getMyRecipes
 			}}
 		>
 			{props.children}

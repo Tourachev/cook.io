@@ -15,6 +15,15 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	dietRestrictions: {
+		type: [String]
+	},
+	shoppingCart: {
+		type: [{name: String, quantity: String}]
+	},
+	favoriteRecipes: {
+		type: [String]
+	},
 	date: {
 		type: Date,
 		default: Date.now

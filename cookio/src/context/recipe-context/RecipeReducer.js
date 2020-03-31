@@ -6,7 +6,8 @@ import {
 	FILTER_RECIPE,
 	CLEAR_FILTER,
 	CONTACT_ERROR,
-	GET_ONE_RECIPE
+	GET_ONE_RECIPE,
+	GET_MY_RECIPES
 } from '../types';
 
 export default (state, action) => {
@@ -23,30 +24,42 @@ export default (state, action) => {
 				recipe: action.payload,
 				loading: false
 			};
+		case GET_MY_RECIPES:
+			return {
+				...state,
+				recipes: action.payload,
+				loading: false
+			};
 		case ADD_RECIPE:
 			return {
 				...state,
-				recipes: [ action.payload, ...state.recipes ],
+				recipes: [action.payload, ...state.recipes],
 				loading: false
 			};
 		case UPDATE_RECIPE:
 			return {
 				...state,
-				recipes: state.recipes.map((recipe) => (recipe._id === action.payload._id ? action.payload : recipe)),
+				recipes: state.recipes.map(recipe =>
+					recipe._id === action.payload._id ? action.payload : recipe
+				),
 				loading: false
 			};
 		case DELETE_RECIPE:
 			return {
 				...state,
-				recipes: state.recipes.filter((recipe) => recipe._id !== action.payload),
+				recipes: state.recipes.filter(
+					recipe => recipe._id !== action.payload
+				),
 				loading: false
 			};
 		case FILTER_RECIPE:
 			return {
 				...state,
-				filtered: state.recipes.filter((recipe) => {
+				filtered: state.recipes.filter(recipe => {
 					const regex = new RegExp(`${action.payload}`, 'gi');
-					return recipe.name.match(regex) || recipe.email.match(regex);
+					return (
+						recipe.name.match(regex) || recipe.email.match(regex)
+					);
 				})
 			};
 		case CLEAR_FILTER:

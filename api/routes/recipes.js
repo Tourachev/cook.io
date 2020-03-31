@@ -27,7 +27,20 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
 	try {
 		const recipe = await Recipe.findOne({_id: req.params.id});
-		console.log(req.params.id);
+		res.json(recipe);
+	} catch (error) {
+		console.error(error.message);
+		res.status(500).send('Server Error');
+	}
+});
+
+// @route GET api/recipe
+// Get users recipe
+// Public
+
+router.get('/user/:id', async (req, res, next) => {
+	try {
+		const recipe = await Recipe.find({user: req.params.id});
 		res.json(recipe);
 	} catch (error) {
 		console.error(error.message);

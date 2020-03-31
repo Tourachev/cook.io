@@ -21,3 +21,5 @@ export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const CONTACT_ERROR = 'CONTACT_ERROR';
 export const GET_ONE_RECIPE = 'GET_ONE_RECIPE';
+export const GET_MY_RECIPES = 'GET_MY_RECIPES';
+export const ADD_USER_RESTRICTIONS = 'ADD_USER_RESTRICTIONS';
