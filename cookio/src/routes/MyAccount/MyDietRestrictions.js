@@ -5,6 +5,13 @@ import {Form, Button, Col} from 'react-bootstrap';
 import empty from '../../img/img13.png';
 import AuthContext from '../../context/auth-context/AuthContext';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 const MyAccount = props => {
 	const [dietRestriction, setDietRestriction] = useState([]);
@@ -113,19 +120,40 @@ const MyAccount = props => {
 						<br />
 						{user.dietRestrictions != undefined ? (
 							<div>
-								{user.dietRestrictions.map(restriction =>
-									restriction != null ? (
-										<div>
-											<hr />
-											<div className='flex-row-between'>
-												<h2>{restriction}</h2>{' '}
-												<DeleteForeverIcon></DeleteForeverIcon>
-											</div>
-										</div>
-									) : (
-										console.log()
-									)
-								)}
+								<TableContainer>
+									<Table aria-label='simple table'>
+										<TableHead>
+											<TableRow>
+												<TableCell>Name</TableCell>
+												<TableCell align='right'>
+													Delete
+												</TableCell>
+											</TableRow>
+										</TableHead>
+										<TableBody>
+											{user.dietRestrictions.map(
+												restriction =>
+													restriction != null ? (
+														<TableRow
+															key={restriction}
+														>
+															<TableCell
+																component='th'
+																scope='row'
+															>
+																{restriction}
+															</TableCell>
+															<TableCell align='right'>
+																<DeleteForeverIcon></DeleteForeverIcon>
+															</TableCell>
+														</TableRow>
+													) : (
+														console.log()
+													)
+											)}
+										</TableBody>
+									</Table>
+								</TableContainer>
 							</div>
 						) : (
 							<div>
@@ -133,9 +161,10 @@ const MyAccount = props => {
 									Currently empty...
 								</h2>
 								<img src={empty} alt='' />
+								<hr />
 							</div>
 						)}
-						<hr />
+						<br />
 						<h1 className='display-4'>Add New Diet Restriction</h1>
 						<Form onSubmit={handleRestrictionSubmit}>
 							<Form.Group

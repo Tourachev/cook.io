@@ -622,11 +622,23 @@ img {
 
 /* Recipe Detail */
 
+.recipe-detail-button-row {
+	margin-top: 3%;
+	margin-bottom: -1%;
+	width: 100%;
+}
+
+.recipe-detail-button-row button {
+	width: 49%;
+}
+
 .recipe-detail {
 	margin: 5% 5% 0% 5%;
 }
 
 .detail-img-container img {
+	display: flex;
+	flex-direction: column;
 	max-width: 30vw;
 }
 
@@ -641,9 +653,9 @@ img {
 
 .recipe-detail-specs {
 	margin-top: 5%;
-	display: flex;
+	/* display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-between; */
 }
 
 .recipe-detail-specs * {

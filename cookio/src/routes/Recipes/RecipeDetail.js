@@ -29,6 +29,10 @@ const RecipeDetail = props => {
 		history.push('/recipes');
 	};
 
+	const handleEdit = () => {
+		console.log('Editing goes here');
+	};
+
 	return (
 		<div>
 			{recipe !== null && !loading ? (
@@ -38,18 +42,14 @@ const RecipeDetail = props => {
 							<div className='flex-row-between'>
 								<h1 className='display-3'>{recipe.name}</h1>
 								<div id='star-rating-detail'>
-									{user !== null &&
-									user._id == recipe.user ? (
-										<button
-											className=' btn btn-danger'
-											id='delete-button'
-											onClick={handleDelete}
-										>
-											Delete
-										</button>
-									) : (
-										<span></span>
-									)}
+									<div>
+										<h3>
+											Cook Time: {recipe.cooktime} mins
+										</h3>
+										<h3>
+											Prep Time: {recipe.preptime} mins
+										</h3>
+									</div>
 								</div>
 							</div>
 							<StarRatings
@@ -63,25 +63,53 @@ const RecipeDetail = props => {
 							/>
 							<hr />
 							<div className='recipe-detail-specs'>
-								<div>
-									<h3>Cook Time: {recipe.cooktime}</h3>
-									<h3>Prep Time: {recipe.preptime}</h3>
-								</div>
-
-								<div>
-									<h3>
-										Number of Ingredients:{' '}
-										{recipe.ingredients.length}
-									</h3>
-									<h3>
-										Number of Instructions:{' '}
-										{recipe.instructions.length}
-									</h3>
-								</div>
+								<h2>Ingredients</h2>
+								<ul>
+									{recipe.ingredients.map(ingredient => (
+										<div>
+											<li>
+												{ingredient.name}{' '}
+												{ingredient.quantity}
+											</li>
+										</div>
+									))}
+								</ul>
 							</div>
 						</div>
 						<div className='detail-img-container'>
 							<img src={temp} alt='' />
+							<div>
+								{' '}
+								<div className='recipe-detail-button-row flex-row-between'>
+									<button className='btn btn-outline-dark '>
+										Add To Cart!
+									</button>
+									<button className='btn btn-outline-dark'>
+										Add To Favorites!
+									</button>
+								</div>
+								{user !== null && user._id == recipe.user ? (
+									<div className='recipe-detail-button-row flex-row-between'>
+										<button
+											className=' btn btn-outline-dark'
+											id='edit-button'
+											onClick={handleEdit}
+										>
+											Edit
+										</button>
+										<br />
+										<button
+											className=' btn btn-danger'
+											id='delete-button'
+											onClick={handleDelete}
+										>
+											Delete
+										</button>
+									</div>
+								) : (
+									<span></span>
+								)}
+							</div>
 						</div>
 					</div>
 					<hr />
