@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, { useReducer } from 'react';
 import RecipeContext from './RecipeContext';
 import RecipeReducer from './RecipeReducer';
 import {
@@ -10,18 +10,21 @@ import {
 	CONTACT_ERROR,
 	GET_RECIPES,
 	GET_ONE_RECIPE,
-	GET_MY_RECIPES
+	GET_MY_RECIPES,
+	CLEAR_CURRENT
 } from '../types';
 import axios from 'axios';
 
-const RecipeState = props => {
+const RecipeState = (props) => {
 	const InitialState = {
 		recipes: [],
 		recipe: null,
+		cuttent: null,
+		filtered: null,
 		isLoading: true
 	};
 
-	const [state, dispatch] = useReducer(RecipeReducer, InitialState);
+	const [ state, dispatch ] = useReducer(RecipeReducer, InitialState);
 
 	// Fetch all Recipes
 	const getRecipes = async () => {
@@ -40,7 +43,8 @@ const RecipeState = props => {
 	};
 
 	// Fetch one Recipe
-	const getOneRecipe = async id => {
+	// Will also select one recipe
+	const getOneRecipe = async (id) => {
 		try {
 			const res = await axios.get('/api/recipes/' + id);
 			dispatch({
@@ -55,8 +59,13 @@ const RecipeState = props => {
 		}
 	};
 
+	// Clear selected recipe
+	const clearCurrent = () => {
+		dispatch({ type: CLEAR_CURRENT });
+	};
+
 	// Fetch Recipes that the user owns
-	const getMyRecipes = async userID => {
+	const getMyRecipes = async (userID) => {
 		try {
 			const res = await axios.get('/api/recipes/user/' + userID);
 			dispatch({
@@ -72,7 +81,7 @@ const RecipeState = props => {
 	};
 
 	// Add Recipe
-	const addRecipe = async recipe => {
+	const addRecipe = async (recipe) => {
 		const config = {
 			headers: {
 				'Content-Type': 'application/json'
@@ -81,21 +90,35 @@ const RecipeState = props => {
 		try {
 			const res = await axios.post('/api/recipes', recipe, config);
 
-			dispatch({type: ADD_RECIPE, payload: res});
+			dispatch({ type: ADD_RECIPE, payload: res });
 		} catch (error) {
-			dispatch({type: CONTACT_ERROR, payload: error.response.msg});
+			dispatch({ type: CONTACT_ERROR, payload: error.response.msg });
 		}
 	};
 
 	// Delete Recipe
-	const deleteRecipe = id => {
-		dispatch({type: DELETE_RECIPE, payload: id});
+	const deleteRecipe = (id) => {
+		dispatch({ type: DELETE_RECIPE, payload: id });
 	};
+
 	// Update Recipe
+
+	const updateRecipe = (recipe) => {
+		console.log(recipe);
+		dispatch({ type: UPDATE_RECIPE, payload: recipe });
+	};
 
 	// Search The Recipes
 
+	const filterRecipes = (input) => {
+		dispatch({ type: FILTER_RECIPE, payload: input });
+	};
+
 	// Clear search
+
+	const clearFilter = () => {
+		dispatch({ type: CLEAR_FILTER });
+	};
 
 	// Fetch Recipes By Meal
 
@@ -107,11 +130,17 @@ const RecipeState = props => {
 				recipes: state.recipes,
 				error: state.error,
 				recipe: state.recipe,
+				current: state.current,
+				filtered: state.filtered,
+				clearCurrent,
 				addRecipe,
 				deleteRecipe,
 				getRecipes,
 				getOneRecipe,
-				getMyRecipes
+				getMyRecipes,
+				updateRecipe,
+				filterRecipes,
+				clearFilter
 			}}
 		>
 			{props.children}

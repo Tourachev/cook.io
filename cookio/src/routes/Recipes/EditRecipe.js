@@ -13,16 +13,22 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import IngredientForm from '../../components/Recipe/IngredientForm';
 import InstructionForm from '../../components/Recipe/InstructionForm';
-import axios from 'axios';
 import RecipeContext from '../../context/recipe-context/RecipeContext';
 import AuthContext from '../../context/auth-context/AuthContext';
 import { useHistory } from 'react-router-dom';
 
-const CreateRecipe = () => {
+const EditRecipe = () => {
 	const recipeContext = useContext(RecipeContext);
 	const authContext = useContext(AuthContext);
+
+	const { current, addRecipe, updateRecipe, clearCurrent } = recipeContext;
 	const { user } = authContext;
+
 	let history = useHistory();
+
+	useEffect(() => {
+		setRecipe(current);
+	}, []);
 
 	const [ ingredients, setIngredients ] = useState([]);
 	const [ instructions, setInstructions ] = useState([]);
@@ -31,18 +37,9 @@ const CreateRecipe = () => {
 		ingredients: ingredients,
 		cooktime: '',
 		preptime: '',
-		difficulty: 'Easy',
+		difficulty: '',
 		instructions: instructions
 	});
-
-	useEffect(
-		() => {
-			console.log(ingredients);
-			console.log(instructions);
-			console.log(recipe);
-		},
-		[ ingredients, instructions, recipe ]
-	);
 
 	const addIngredient = (newIngredient) => {
 		const newIngredients = [ ...ingredients, { name: newIngredient.name, quantity: newIngredient.quantity } ];
@@ -87,7 +84,8 @@ const CreateRecipe = () => {
 	const handleRecipeSubmit = (e) => {
 		e.preventDefault();
 		if (!recipe) return;
-		recipeContext.addRecipe(recipe);
+		updateRecipe(recipe);
+		clearCurrent();
 		setRecipe({
 			name: '',
 			ingredients: ingredients,
@@ -96,33 +94,51 @@ const CreateRecipe = () => {
 			difficulty: '',
 			instructions: instructions
 		});
-		history.push('/recipes');
+		// history.push('/recipes');
 	};
 	return (
 		<div>
 			<div className='container'>
-				<h1 className='display-3'>Create A Recipe</h1>
+				<h1 className='display-3'>Edit A Recipe</h1>
 				<Form onSubmit={handleRecipeSubmit}>
 					<Form.Group controlId='name'>
 						<Form.Label>Name</Form.Label>
-						<Form.Control type='text' placeholder='Enter Name' required onChange={handleRecipeChange} />
+						<Form.Control
+							type='text'
+							placeholder='Enter Name'
+							required
+							value={recipe.name}
+							onChange={handleRecipeChange}
+						/>
 					</Form.Group>
 
 					<Form.Row>
 						<Form.Group as={Col} controlId='cooktime'>
 							<Form.Label>Cook Time in Minutes: </Form.Label>
-							<Form.Control type='number' placeholder='10' onChange={handleRecipeChange} required />
+							<Form.Control
+								type='number'
+								placeholder='10'
+								onChange={handleRecipeChange}
+								value={recipe.cooktime}
+								required
+							/>
 						</Form.Group>
 
 						<Form.Group as={Col} controlId='preptime'>
 							<Form.Label>Prep Time in Minutes: </Form.Label>
-							<Form.Control type='number' placeholder='10' onChange={handleRecipeChange} required />
+							<Form.Control
+								type='number'
+								placeholder='10'
+								onChange={handleRecipeChange}
+								value={recipe.preptime}
+								required
+							/>
 						</Form.Group>
 					</Form.Row>
 
 					<Form.Group controlId='difficulty'>
 						<Form.Label>Difficulty</Form.Label>
-						<Form.Control as='select' onChange={handleRecipeChange} required>
+						<Form.Control as='select' onChange={handleRecipeChange} value={recipe.difficulty} required>
 							<option value='Easy' selected>
 								Easy
 							</option>
@@ -151,7 +167,7 @@ const CreateRecipe = () => {
 									</TableRow>
 								</TableHead>
 								<TableBody>
-									{ingredients.map((recipe, index) => (
+									{recipe.ingredients.map((recipe, index) => (
 										<TableRow key={index}>
 											<TableCell component='th' scope='row'>
 												{recipe.name}
@@ -175,7 +191,7 @@ const CreateRecipe = () => {
 
 					<div className='current-instructions'>
 						<TableContainer component={Paper}>
-							{instructions.map((instruction, index) => (
+							{recipe.instructions.map((instruction, index) => (
 								<Table>
 									<TableHead className='table-head'>
 										<TableRow>
@@ -203,7 +219,7 @@ const CreateRecipe = () => {
 
 					<hr />
 					<Button variant='outline-success' size='lg' block type='submit'>
-						Create!
+						Done Correcting!
 					</Button>
 				</Form>
 			</div>
@@ -211,4 +227,4 @@ const CreateRecipe = () => {
 	);
 };
 
-export default CreateRecipe;
+export default EditRecipe;

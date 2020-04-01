@@ -1,6 +1,6 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import {Route, Switch, BrowserRouter as Router} from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import PrivateRoute from '../components/routing/PrivateRoute';
@@ -34,6 +34,7 @@ import MyDiet from '../routes/MyAccount/MyDietRestrictions';
 import ChangeEmail from '../routes/MyAccount/ChangeEmail';
 import ChangePassword from '../routes/MyAccount/ChangePassword';
 import CreateRecipe from '../routes/Recipes/CreateRecipe';
+import EditRecipe from '../routes/Recipes/EditRecipe';
 
 if (localStorage.token) {
 	setAuthToken(localStorage.token);
@@ -52,90 +53,24 @@ function App() {
 								<Navbar />
 								<Switch>
 									<Route exact path='/' component={Home} />
-									<Route
-										exact
-										path='/index'
-										component={Home}
-									/>
-									<Route
-										exact
-										path='/aboutus'
-										component={AboutUs}
-									/>
-									<Route
-										exact
-										path='/login'
-										component={LogIn}
-									/>
-									<Route
-										exact
-										path='/signup'
-										component={SignUp}
-									/>
-									<Route
-										exact
-										path='/recipes'
-										component={RecipesMain}
-									/>
-									<Route
-										exact
-										path='/recipe/:id'
-										component={RecipeDetail}
-									/>
-									<PrivateRoute
-										path='/newrecipe'
-										component={CreateRecipe}
-									/>
-									<Route
-										exact
-										path='/bymeal'
-										component={RecipesByMeal}
-									/>
-									<Route
-										exact
-										path='/byingredient'
-										component={RecipesByIngredient}
-									/>
-									<PrivateRoute
-										exact
-										path='/myaccount/'
-										component={MyAccount}
-									/>
-									<PrivateRoute
-										exact
-										path='/myaccount/recipes'
-										component={MyRecipes}
-									/>
-									<PrivateRoute
-										exact
-										path='/myaccount/shoppingcart'
-										component={MyCart}
-									/>
-									<PrivateRoute
-										exact
-										path='/myaccount/favorite'
-										component={MyFavorite}
-									/>
-									<PrivateRoute
-										exact
-										path='/myaccount/diet'
-										component={MyDiet}
-									/>
-									<PrivateRoute
-										exact
-										path='/myaccount/changeemail'
-										component={ChangeEmail}
-									/>
-									<PrivateRoute
-										exact
-										path='/myaccount/changepassword'
-										component={ChangePassword}
-									/>
-									<Route
-										exact
-										path='/*'
-										component={NotFound}
-									/>
+									<Route exact path='/index' component={Home} />
+									<Route exact path='/aboutus' component={AboutUs} />
+									<Route exact path='/login' component={LogIn} />
+									<Route exact path='/signup' component={SignUp} />
+									<Route exact path='/recipes' component={RecipesMain} />
+									<Route exact path='/recipe/:id' component={RecipeDetail} />
+									<Route exact path='/editrecipe' component={EditRecipe} />
+									<PrivateRoute path='/newrecipe' component={CreateRecipe} />
+									<Route exact path='/bymeal' component={RecipesByMeal} />
+									<Route exact path='/byingredient' component={RecipesByIngredient} />
+									<PrivateRoute exact path='/myaccount/' component={MyAccount} />
+									<PrivateRoute exact path='/myaccount/recipes' component={MyRecipes} />
+									<PrivateRoute exact path='/myaccount/shoppingcart' component={MyCart} />
+									<PrivateRoute exact path='/myaccount/favorite' component={MyFavorite} />
+									<PrivateRoute exact path='/myaccount/diet' component={MyDiet} />
+									<PrivateRoute exact path='/myaccount/changeemail' component={ChangeEmail} />
+									<PrivateRoute exact path='/myaccount/changepassword' component={ChangePassword} />
+									<Route exact path='/*' component={NotFound} />
 								</Switch>
 							</div>
 

@@ -1,28 +1,24 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import RecipeContext from '../../context/recipe-context/RecipeContext';
 import AuthContext from '../../context/auth-context/AuthContext';
 import temp from '../../img/img11.com.jpg';
 import StarRatings from 'react-star-ratings';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-const RecipeDetail = props => {
+const RecipeDetail = (props) => {
 	let history = useHistory();
 
 	const recipeContext = useContext(RecipeContext);
 	const authContext = useContext(AuthContext);
 
-	const {user} = authContext;
-	const {recipe, deleteRecipe, loading, getOneRecipe} = recipeContext;
-
-	console.log(user);
+	const { user } = authContext;
+	const { recipe, deleteRecipe, loading, getOneRecipe, current } = recipeContext;
 
 	useEffect(() => {
 		getOneRecipe(props.match.params.id);
 	}, []);
-
-	console.log(recipe);
 
 	const handleDelete = () => {
 		deleteRecipe(recipe.id);
@@ -30,7 +26,7 @@ const RecipeDetail = props => {
 	};
 
 	const handleEdit = () => {
-		console.log('Editing goes here');
+		history.push('/editrecipe');
 	};
 
 	return (
@@ -43,12 +39,8 @@ const RecipeDetail = props => {
 								<h1 className='display-3'>{recipe.name}</h1>
 								<div id='star-rating-detail'>
 									<div>
-										<h3>
-											Cook Time: {recipe.cooktime} mins
-										</h3>
-										<h3>
-											Prep Time: {recipe.preptime} mins
-										</h3>
+										<h3>Cook Time: {recipe.cooktime} mins</h3>
+										<h3>Prep Time: {recipe.preptime} mins</h3>
 									</div>
 								</div>
 							</div>
@@ -65,11 +57,10 @@ const RecipeDetail = props => {
 							<div className='recipe-detail-specs'>
 								<h2>Ingredients</h2>
 								<ul>
-									{recipe.ingredients.map(ingredient => (
+									{recipe.ingredients.map((ingredient) => (
 										<div>
 											<li>
-												{ingredient.name}{' '}
-												{ingredient.quantity}
+												{ingredient.name} {ingredient.quantity}
 											</li>
 										</div>
 									))}
@@ -81,50 +72,33 @@ const RecipeDetail = props => {
 							<div>
 								{' '}
 								<div className='recipe-detail-button-row flex-row-between'>
-									<button className='btn btn-outline-dark '>
-										Add To Cart!
-									</button>
-									<button className='btn btn-outline-dark'>
-										Add To Favorites!
-									</button>
+									<button className='btn btn-outline-dark '>Add To Cart!</button>
+									<button className='btn btn-outline-dark'>Add To Favorites!</button>
 								</div>
 								{user !== null && user._id == recipe.user ? (
 									<div className='recipe-detail-button-row flex-row-between'>
-										<button
-											className=' btn btn-outline-dark'
-											id='edit-button'
-											onClick={handleEdit}
-										>
+										<button className=' btn btn-outline-dark' id='edit-button' onClick={handleEdit}>
 											Edit
 										</button>
 										<br />
-										<button
-											className=' btn btn-danger'
-											id='delete-button'
-											onClick={handleDelete}
-										>
+										<button className=' btn btn-danger' id='delete-button' onClick={handleDelete}>
 											Delete
 										</button>
 									</div>
 								) : (
-									<span></span>
+									<span />
 								)}
 							</div>
 						</div>
 					</div>
 					<hr />
 					<h1 className='display-3 center-text'>Instructions</h1>
-					{recipe.instructions.map(instruction => (
+					{recipe.instructions.map((instruction) => (
 						<div>
 							{' '}
-							<h1 className='display-4'>
-								Step{' '}
-								{recipe.instructions.indexOf(instruction) + 1}
-							</h1>
+							<h1 className='display-4'>Step {recipe.instructions.indexOf(instruction) + 1}</h1>
 							<hr />
-							<p className='enlarged-text'>
-								{instruction.instruction}
-							</p>
+							<p className='enlarged-text'>{instruction.instruction}</p>
 						</div>
 					))}
 					<hr />
