@@ -13,6 +13,7 @@ const RecipeList = (props) => {
 
 	// Mimics component did mount. Square brackets hold content of what needs to change in order to update
 	useEffect(() => {
+		// Will load all recipes into the context
 		getRecipes();
 	}, []);
 
