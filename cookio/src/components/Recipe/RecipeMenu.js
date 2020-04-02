@@ -44,7 +44,7 @@ const RecipeMenu = (props) => {
 							class='form-control'
 						/>
 					</form>
-
+					<br />
 					<div className='filter-selection-row'>
 						<a className={` ${selected === 'top' ? 'filter-selection-button-selected' : ''}`}>
 							Top Recipes
