@@ -48,6 +48,12 @@ router.get('/user/:id', async (req, res, next) => {
 	}
 });
 
+// @route POST api/recipe/image/:id
+// Create a recipe
+// Private
+
+// @ts-ignore
+
 // @route POST api/recpipe
 // Create a recipe
 // Private

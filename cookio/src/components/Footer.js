@@ -19,18 +19,10 @@ const Footer = () => {
 						<div class='row'>
 							<div class='col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1'>
 								<h5 class='font-weight-bold text-uppercase mb-4'>
-									Footer Content
+									Cookio
 								</h5>
-								<p>
-									Here you can use rows and columns to
-									organize your footer content.
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur
-									adipisicing elit. Fugit amet numquam iure
-									provident voluptate esse quasi, veritatis
-									totam voluptas nostrum.
-								</p>
+								<p>Your Free Ticket To A Culinary Journey</p>
+								<p>Like what you see? Support the project!</p>
 							</div>
 
 							<hr class='clearfix w-100 d-md-none' />
@@ -147,24 +139,15 @@ const Footer = () => {
 					<div class='row'>
 						<div class='col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1'>
 							<h5 class='font-weight-bold text-uppercase mb-4'>
-								Footer Content
+								Cookio
 							</h5>
-							<p>
-								Here you can use rows and columns to organize
-								your footer content.
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Fugit amet numquam iure
-								provident voluptate esse quasi, veritatis totam
-								voluptas nostrum.
-							</p>
+							<p>Your Free Ticket To A Culinary Journey</p>
+							<p>Like what you see? Support the project!</p>
 						</div>
-
 						<hr class='clearfix w-100 d-md-none' />
 
 						<div class='col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1'>
-							<h5 class='font-weight-bold text-uppercase mb-4'>
+							{/* <h5 class='font-weight-bold text-uppercase mb-4'>
 								About
 							</h5>
 
@@ -189,7 +172,7 @@ const Footer = () => {
 										<a href='#!'>AWARDS</a>
 									</p>
 								</li>
-							</ul>
+							</ul> */}
 						</div>
 
 						<hr class='clearfix w-100 d-md-none' />
@@ -255,7 +238,10 @@ const Footer = () => {
 
 				<div class='footer-copyright text-center py-3'>
 					© 2020 Copyright:
-					<a href='https://mdbootstrap.com/'> Viacheslav Tourachev</a>
+					<a href='https://tourachev.com' target='_blank'>
+						{' '}
+						Viacheslav Tourachev
+					</a>
 				</div>
 			</div>
 		</div>
