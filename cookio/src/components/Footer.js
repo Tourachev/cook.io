@@ -11,237 +11,129 @@ const Footer = () => {
 		logout();
 	};
 
-	if (isAuthenticated) {
-		return (
-			<div>
-				<div class='footer-container page-footer font-small mdb-color lighten-3 pt-4'>
-					<div class=' text-center text-md-left'>
-						<div class='row'>
-							<div class='col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1'>
-								<h5 class='font-weight-bold text-uppercase mb-4'>
-									Cookio
-								</h5>
-								<p>Your Free Ticket To A Culinary Journey</p>
-								<p>Like what you see? Support the project!</p>
-							</div>
-
-							<hr class='clearfix w-100 d-md-none' />
-
-							<div class='col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1'>
-								<h5 class='font-weight-bold text-uppercase mb-4'>
-									About
-								</h5>
-
-								<ul class='list-unstyled'>
-									<li>
-										<p>
-											<a href='#!'>PROJECTS</a>
-										</p>
-									</li>
-									<li>
-										<p>
-											<a href='#!'>ABOUT US</a>
-										</p>
-									</li>
-									<li>
-										<p>
-											<a href='#!'>BLOG</a>
-										</p>
-									</li>
-									<li>
-										<p>
-											<a href='#!'>AWARDS</a>
-										</p>
-									</li>
-								</ul>
-							</div>
-
-							<hr class='clearfix w-100 d-md-none' />
-
-							<div class='col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1'>
-								<h5 class='font-weight-bold text-uppercase mb-4'>
-									Address
-								</h5>
-
-								<ul class='list-unstyled'>
-									<li>
-										<p>
-											<i class='fas fa-home mr-3'></i> New
-											York, NY 10012, US
-										</p>
-									</li>
-									<li>
-										<p>
-											<i class='fas fa-envelope mr-3'></i>{' '}
-											info@example.com
-										</p>
-									</li>
-									<li>
-										<p>
-											<i class='fas fa-phone mr-3'></i> +
-											01 234 567 88
-										</p>
-									</li>
-									<li>
-										<p>
-											<i class='fas fa-print mr-3'></i> +
-											01 234 567 89
-										</p>
-									</li>
-								</ul>
-							</div>
-
-							<hr class='clearfix w-100 d-md-none' />
-
-							<div class='col-md-2 col-lg-2 text-center mx-auto my-4'>
-								<h5 class='font-weight-bold text-uppercase mb-4'>
-									Follow Us
-								</h5>
-
-								<a type='button' class='btn-floating btn-fb'>
-									<i class='fab fa-facebook-f'></i>
-								</a>
-
-								<a type='button' class='btn-floating btn-tw'>
-									<i class='fab fa-twitter'></i>
-								</a>
-
-								<a type='button' class='btn-floating btn-gplus'>
-									<i class='fab fa-google-plus-g'></i>
-								</a>
-
-								<a
-									type='button'
-									class='btn-floating btn-dribbble'
-								>
-									<i class='fab fa-dribbble'></i>
-								</a>
-							</div>
-						</div>
-					</div>
-
-					<div class='footer-copyright text-center py-3'>
-						© 2020 Copyright:
-						<a href='https://mdbootstrap.com/'>
-							{' '}
-							Viacheslav Tourachev
-						</a>
-					</div>
-				</div>
-			</div>
-		);
-	}
-
 	return (
 		<div>
-			<div class='footer-container page-footer font-small mdb-color lighten-3 pt-4'>
-				<div class=' text-center text-md-left'>
-					<div class='row'>
-						<div class='col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1'>
-							<h5 class='font-weight-bold text-uppercase mb-4'>
-								Cookio
-							</h5>
-							<p>Your Free Ticket To A Culinary Journey</p>
-							<p>Like what you see? Support the project!</p>
+			<div className='footer-container page-footer font-small mdb-color lighten-3 pt-4'>
+				<div className='container'>
+					<div className='row'>
+						<div className='col-sm-12 col-md-6'>
+							<h6>About</h6>
+							<p className='text-justify'>
+								Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is
+								an initiative to help the upcoming programmers
+								with the code. Scanfcode focuses on providing
+								the most efficient code or snippets as the code
+								wants to be simple. We will help programmers
+								build up concepts in different programming
+								languages that include C, C++, Java, HTML, CSS,
+								Bootstrap, JavaScript, PHP, Android, SQL and
+								Algorithm.
+							</p>
 						</div>
-						<hr class='clearfix w-100 d-md-none' />
 
-						<div class='col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1'>
-							{/* <h5 class='font-weight-bold text-uppercase mb-4'>
-								About
-							</h5>
-
-							<ul class='list-unstyled'>
+						<div className='col-xs-6 col-md-3'>
+							{/* <h6>Categories</h6>
+							<ul className='footer-links'>
 								<li>
-									<p>
-										<a href='#!'>PROJECTS</a>
-									</p>
+									<a href='http://scanfcode.com/category/c-language/'>
+										C
+									</a>
 								</li>
 								<li>
-									<p>
-										<a href='#!'>ABOUT US</a>
-									</p>
+									<a href='http://scanfcode.com/category/front-end-development/'>
+										UI Design
+									</a>
 								</li>
 								<li>
-									<p>
-										<a href='#!'>BLOG</a>
-									</p>
+									<a href='http://scanfcode.com/category/back-end-development/'>
+										PHP
+									</a>
 								</li>
 								<li>
-									<p>
-										<a href='#!'>AWARDS</a>
-									</p>
+									<a href='http://scanfcode.com/category/java-programming-language/'>
+										Java
+									</a>
+								</li>
+								<li>
+									<a href='http://scanfcode.com/category/android/'>
+										Android
+									</a>
+								</li>
+								<li>
+									<a href='http://scanfcode.com/category/templates/'>
+										Templates
+									</a>
 								</li>
 							</ul> */}
 						</div>
 
-						<hr class='clearfix w-100 d-md-none' />
-
-						<div class='col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1'>
-							<h5 class='font-weight-bold text-uppercase mb-4'>
-								Address
-							</h5>
-
-							<ul class='list-unstyled'>
+						<div className='col-xs-6 col-md-3'>
+							<h6>Quick Links</h6>
+							<ul className='footer-links'>
 								<li>
-									<p>
-										<i class='fas fa-home mr-3'></i> New
-										York, NY 10012, US
-									</p>
+									<a href='http://scanfcode.com/about/'>
+										About Us
+									</a>
 								</li>
 								<li>
-									<p>
-										<i class='fas fa-envelope mr-3'></i>{' '}
-										info@example.com
-									</p>
+									<a href='http://scanfcode.com/contact/'>
+										Contact Us
+									</a>
 								</li>
 								<li>
-									<p>
-										<i class='fas fa-phone mr-3'></i> + 01
-										234 567 88
-									</p>
+									<a href='http://scanfcode.com/contribute-at-scanfcode/'>
+										Contribute
+									</a>
 								</li>
 								<li>
-									<p>
-										<i class='fas fa-print mr-3'></i> + 01
-										234 567 89
-									</p>
+									<a href='http://scanfcode.com/privacy-policy/'>
+										Privacy Policy
+									</a>
+								</li>
+								<li>
+									<a href='http://scanfcode.com/sitemap/'>
+										Sitemap
+									</a>
 								</li>
 							</ul>
 						</div>
+					</div>
+					<hr />
+				</div>
+				<div className='container'>
+					<div className='row'>
+						<div className='col-md-8 col-sm-6 col-xs-12'>
+							<p className='copyright-text'>
+								Copyright &copy; 2017 All Rights Reserved by
+								<a href='#'>Scanfcode</a>.
+							</p>
+						</div>
 
-						<hr class='clearfix w-100 d-md-none' />
-
-						<div class='col-md-2 col-lg-2 text-center mx-auto my-4'>
-							<h5 class='font-weight-bold text-uppercase mb-4'>
-								Follow Us
-							</h5>
-
-							<a type='button' class='btn-floating btn-fb'>
-								<i class='fab fa-facebook-f'></i>
-							</a>
-
-							<a type='button' class='btn-floating btn-tw'>
-								<i class='fab fa-twitter'></i>
-							</a>
-
-							<a type='button' class='btn-floating btn-gplus'>
-								<i class='fab fa-google-plus-g'></i>
-							</a>
-
-							<a type='button' class='btn-floating btn-dribbble'>
-								<i class='fab fa-dribbble'></i>
-							</a>
+						<div className='col-md-4 col-sm-6 col-xs-12'>
+							<ul className='social-icons'>
+								<li>
+									<a className='facebook' href='#'>
+										<i className='fa fa-facebook'></i>
+									</a>
+								</li>
+								<li>
+									<a className='twitter' href='#'>
+										<i className='fa fa-twitter'></i>
+									</a>
+								</li>
+								<li>
+									<a className='dribbble' href='#'>
+										<i className='fa fa-dribbble'></i>
+									</a>
+								</li>
+								<li>
+									<a className='linkedin' href='#'>
+										<i className='fa fa-linkedin'></i>
+									</a>
+								</li>
+							</ul>
 						</div>
 					</div>
-				</div>
-
-				<div class='footer-copyright text-center py-3'>
-					© 2020 Copyright:
-					<a href='https://tourachev.com' target='_blank'>
-						{' '}
-						Viacheslav Tourachev
-					</a>
 				</div>
 			</div>
 		</div>
